@@ -1,7 +1,8 @@
 ---
 title: "About"
 layout: "about"
-image: "/images/sakura.png"
+customFields:
+  - image: "/images/sakura.png"
 ---
 
 ## About

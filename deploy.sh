@@ -1,17 +1,31 @@
 #!/usr/bin/env bash
 set -euo pipefail
+REPO="anna-ssg/anna"
+ARCH="Linux_x86_64"
 
-echo "Installing Go..."
+echo "Fetching latest release info for $REPO..."
+LATEST_TAG=$(
+  curl -s https://api.github.com/repos/$REPO/releases/latest \
+  | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p'
+)
 
-GO_VERSION=1.22.0
-curl -LO https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
-tar -C /tmp -xzf go${GO_VERSION}.linux-amd64.tar.gz
-export PATH="/tmp/go/bin:$PATH"
+if [[ -z "$LATEST_TAG" ]]; then
+  echo "Failed to determine latest release tag"
+  exit 1
+fi
 
-go version
+echo "Latest release: $LATEST_TAG"
+TARBALL="anna_${ARCH}.tar.gz"
+URL="https://github.com/$REPO/releases/download/$LATEST_TAG/$TARBALL"
 
-echo "Building anna from local source..."
-go build -o anna
+echo "Downloading $URL..."
+curl -L "$URL" | tar -xz
 
+if [[ ! -f anna ]]; then
+  echo "anna binary not found after extraction"
+  exit 1
+fi
+
+chmod +x anna
 echo "Running anna..."
 ./anna

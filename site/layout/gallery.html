@@ -8,10 +8,12 @@
         <article class="content gallery-content">
             <h1 class="collection-title">{{ $PageData.Frontmatter.Title }}</h1>
             <div class="gallery-grid">
-                {{ range $index, $filename := .GalleryImages }}
+                {{ range $field := $PageData.Frontmatter.CustomFields }}
+                    {{ range $filename := $field }}
                     <figure class="gallery-item">
-                        <img src="/assets/images/gallery/{{ $filename }}" loading="lazy" alt="" data-index="{{ $index }}" data-filename="{{ $filename }}" class="gallery-thumbnail">
+                        <img src="/assets/images/gallery/{{ $filename }}" loading="lazy" alt="" data-filename="{{ $filename }}" class="gallery-thumbnail">
                     </figure>
+                    {{ end }}
                 {{ end }}
             </div>
         </article>

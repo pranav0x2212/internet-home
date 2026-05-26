@@ -8,11 +8,11 @@
         <article class="content">
             <h1 class="collection-title">{{ $PageData.Frontmatter.Title }}</h1>
             <section class="posts">
-                {{ $posts := collectByPrefixSorted "blogs/" (printf "%s" .PageURL) }}
+                {{ $posts := index .DeepDataMerge.CollectionsMap .PageURL }}
                 {{ range $Post := $posts }}
                     <div class="blog-item">
                         <h3 class="blog-title"><a href="/{{ $Post.CompleteURL }}">{{ $Post.Frontmatter.Title }}</a></h3>
-                        <div class="blog-date">{{ if $Post.Frontmatter.Date }}{{ formatDate $Post.Frontmatter.Date }}{{ else }}{{ formatDate $Post.Date }}{{ end }}</div>
+                        <div class="blog-date">{{ if $Post.Frontmatter.Date }}{{ $Post.Frontmatter.Date }}{{ else }}{{ $Post.Date }}{{ end }}</div>
                         {{ if $Post.Frontmatter.Description }}<p class="blog-desc">{{ $Post.Frontmatter.Description }}</p>{{ end }}
                     </div>
                 {{ end }}

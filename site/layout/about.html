@@ -11,10 +11,12 @@
                 <div class="about-copy">
                     {{$PageData.Body}}
                 </div>
-                {{ if $PageData.Frontmatter.Image }}
+                {{ range $field := $PageData.Frontmatter.CustomFields }}
+                    {{ if $imageValue := index $field "image" }}
                 <aside class="about-art" aria-hidden="true">
-                    <img src="{{ $PageData.Frontmatter.Image }}" alt="" loading="lazy">
+                    <img src="{{ $imageValue }}" alt="" loading="lazy">
                 </aside>
+                {{ end }}
                 {{ end }}
             </section>
         </article>

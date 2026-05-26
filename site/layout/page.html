@@ -12,8 +12,10 @@
                 {{ if and (ne (len $PageData.Frontmatter.Title) 0) (ne $PageData.Frontmatter.Title "Pranav") }}
                 <div class="post-description">
                     <h1>{{ $PageData.Frontmatter.Title }}</h1>
-                                        {{ if .Image }}
-                                            <img class="blog-cover" src="{{ .Image }}" alt="cover image" />
+                                        {{ range $field := $PageData.Frontmatter.CustomFields }}
+                                            {{ if $imageValue := index $field "image" }}
+                                            <img class="blog-cover" src="{{ $imageValue }}" alt="cover image" />
+                                            {{ end }}
                                         {{ end }}
                     <div class="page-date">
                         {{ if ne (len $PageData.Frontmatter.Date) 0 }}
@@ -36,7 +38,7 @@
                 </div>
                 {{ end }}
 
-                {{$PageData.Body}}{{- if .IsHome }}
+                {{$PageData.Body}}{{- if or (eq .PageURL "/") (eq .PageURL "/index.html") }}
                 <section class="listening-now">
                     <h2>
                         Listening to on
@@ -50,7 +52,7 @@
 
     </main>
 
-    {{- if .IsHome }}
+    {{- if or (eq .PageURL "/") (eq .PageURL "/index.html") }}
     <script defer src="/static/js/lastfm.js"></script>
     {{- end }}
 
