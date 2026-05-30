@@ -7,7 +7,15 @@
     },
     {
       "src": "/blogs/(.*)",
-      "dest": "/blogs/$1/index.html"
+      "dest": "/blogs/$1.html"
+    },
+    {
+      "src": "/til/?",
+      "dest": "/til/index.html"
+    },
+    {
+      "src": "/til/(.*)",
+      "dest": "/til/$1.html"
     }
   ]
 }
