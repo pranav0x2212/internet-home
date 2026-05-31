@@ -54,3 +54,5 @@ The whole thing made me realize something: Maybe getting better at engineering i
 Still figuring this one out. I want to end this TIL with a wonderful quote my friend mentioned: 
 
 > To err is human, to insist is ... vibe coding 😉
+
+This TIL couldn't have been written without my best half [Essen](https://essenceia.github.io/), [yg](https://hackaday.io/whygee) and [Erstfeld](https://terse.ink/). 
