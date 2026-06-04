@@ -25,6 +25,10 @@ title: "Pranav"
     <a href="mailto:pranav.m1205@gmail.com">pranav.m1205@gmail.com</a>
   </p>
 
+  <p>
+    Download my resume <a href="/Pranav_Resume.pdf" target="_blank" rel="noopener">here</a>.
+  </p>
+
   <div class="contact-icons">
     <a href="https://github.com/pranav0x0112" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/prawns/" target="_blank"><i class="fab fa-linkedin"></i></a>
