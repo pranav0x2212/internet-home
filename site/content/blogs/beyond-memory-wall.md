@@ -142,6 +142,30 @@ This ended up shifting something in how I think about performance more generally
 
 ---
 
+## Where Do We Go Now?
+
+If this rabbit hole was interesting and you want to go a little deeper, here are a few places worth getting lost in:
+
+- [Computer Systems: A Programmer's Perspective (CSAPP)](https://www.cs.sfu.ca/~ashriram/Courses/CS295/assets/books/CSAPP_2016.pdf):
+  Probably one of the best books for building intuition around caches, memory hierarchies, and performance.
+
+- [Computer Architecture: A Quantitative Approach by Hennessy & Patterson](https://acs.pub.ro/~cpop/SMPA/Computer%20Architecture%20A%20Quantitative%20Approach%20(5th%20edition).pdf): 
+  If you want to go deeper into how modern processors actually behave, this is one of the classics. 
+
+- [What Every Programmer Should Know About Memory by Ulrich Drepper](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf):
+  A classic deep dive into how modern memory systems actually behave under the hood. 
+
+- [Agner Fog's Microarchitecture Guides](https://www.agner.org/optimize/microarchitecture.pdf):
+  Excellent resource for understanding out-of-order execution, latency hiding, prefetching, and how CPUs quietly save you from yourself.  
+
+- [Valgrind / Cachegrind](https://valgrind.org/):
+  If you want to actually see how memory behaviour affects performance, these tools are a fantastic place to start.  
+
+- Conversations with seniors who have already been down the rabbit hole:
+  A surprisingly effective way to discover that your explanation was only about 70% complete.
+
+---
+
 And because every systems rabbit hole eventually starts looking like this:
 
 ![Goose](https://i.postimg.cc/g2JTgvtf/okkk.png)
