@@ -3,7 +3,7 @@ title: "About Me"
 layout: "about"
 ---
 
-## About
+## About Me
 
 ![Pranav giving a talk](/images/talk.jpg)
 
