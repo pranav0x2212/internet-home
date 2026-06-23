@@ -1,66 +1,30 @@
 ---
 title: "About"
 layout: "about"
-customFields:
-  - image: "/images/sakura.png"
 ---
 
 ## About
 
-Hi, I'm Pranav (I have no idea what to write here).
+![Pranav giving a talk](/images/talk.jpg)
 
-<section class="about-section about-section-engineering">
-<div class="about-section-text about-text">
-<h3>Engineering</h3>
+> My first technical talk at [HSP's FOSS Talks 3.0](https://hsp-ec.xyz/announcements/fosstalks-3)!
 
-I'm an undergraduate electronics student who spends a lot of time thinking about computer architecture, hardware design, RISC-V, and open source silicon. I enjoy understanding how processors actually work under the hood and building things that get closer to the silicon.
+Hi, I'm Pranav.
 
-Most of the technical stuff I write about here comes from things I'm learning, experimenting with, or breaking and fixing along the way.
-</div>
+I'm an undergraduate electronics student interested in computer architecture, memory systems, and digital hardware design. I enjoy understanding how modern systems move, store, and process data, and spend much of my time exploring memory architectures and their performance implications.
 
-<div class="about-section-media about-image">
-<img class="about-section-image about-engineering-image" src="/images/tinytapeout.png" alt="TinyTapeout layout" loading="lazy">
-</div>
-</section>
+I enjoy learning by building things from first principles, reading papers, and writing about ideas that catch my interest. Many of these habits were instilled in me by my good friend [Nathan](https://polarhive.net/) and a cool bunch of people at [HSP](https://hsp-ec.xyz/).
 
-<section class="about-section about-section-music">
-<div class="about-section-media about-image">
-<img class="about-section-image about-guitar-image" src="/images/guitar.jpg" alt="Guitar" loading="lazy">
-</div>
+Outside engineering, I spend a lot of time listening to music and playing guitar. I've owned a guitar for years, but it mostly sat in a corner collecting dust. Lately I've been playing a lot more, thanks to my friend [Adi Hegde](https://adihegde.com/), who inspired me to pick it up again.
 
-<div class="about-section-text about-text">
-<h3>Music</h3>
+I've been sketching since I was a kid, and it's something I still enjoy spending time on. Some of my drawings can be found in the [Gallery](/gallery/). If you're looking for artwork with actual colors, my friend [Yashmitha](https://yashmitha.vercel.app/) has a wonderful collection of pieces [here](https://yashmitha.vercel.app/creative).
 
-Outside of engineering, I spend a lot of time with music and guitar. I'm really into rock - especially Dire Straits (easily my favourite), along with Queen, Led Zeppelin, Green Day, and Arctic Monkeys.
-</div>
-</section>
-
-<section class="about-section about-section-sketching">
-<div class="about-section-text about-text">
-<h3>Sketching</h3>
-
-As someone who's been drawing since he was 5, I've always enjoyed sketching. I'm still learning new things every day and it's something I genuinely love doing.
-
-See more in the [Gallery](/gallery/)
-</div>
-
-<div class="about-section-media about-image">
-<img class="about-section-image about-sketch-image" src="/images/minato.jpg" alt="Minato drawing" loading="lazy">
-</div>
-</section>
-
-<section class="about-section about-section-text-only">
-<div class="about-section-text about-text">
-<h3>Other things I enjoy</h3>
-
-- playing badminton
-- doing pencil sketches (some of them are in the Gallery)
-- trying to find a really good dosa
-- exploring random things that catch my interest
+Outside of engineering, you'll usually find me playing badminton, searching for a really good dosa, or exploring whatever random topic has captured my attention that week. I've been trying to get back into reading about horror, thriller and mystery.
 
 I also have a weird but genuine fascination with snakes.
 
-</div>
-</section>
+## About this site
 
-This site is basically my small corner of the internet where I write about things I build, learn, and occasionally obsess over.
+This site is my small corner of the internet.
+
+The Blog contains longer write-ups, project logs, and things I've spent a significant amount of time thinking about. The TIL section is where I keep notes on things I'm learning, whether that's a computer architecture concept, a useful tool, or an interesting paper.
