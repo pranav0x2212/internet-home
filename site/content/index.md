@@ -6,22 +6,23 @@ title: "Pranav"
 <h1>Hi, I'm Pranav 👋</h1>
 
 <p>
-  I’m an undergraduate electronics student drawn to digital hardware,
-  processor design, and embedded systems.
+  I'm an undergraduate electronics student interested in computer
+  architecture, memory systems, and digital hardware design.
 </p>
 
 <p>
-  I build open-source RISC-V cores, explore verification methodologies,
-  microarchitecture, and performance-driven design.
+  My current interests include DDR memory controllers,
+  processing-in-memory architectures, and understanding how modern
+  systems move, store, and process data.
 </p>
 
 <p>
-  Most of my work lives on <a href="https://github.com/pranav0x0112" target="_blank">GitHub</a>, and this site is where I write about what I learn. Feel free to sign my <a href="/guestbook/"> guestbook</a>!
+  Most of my work lives on <a href="https://github.com/pranav0x2212" target="_blank">GitHub</a>, and this site is where I write about what I learn. Feel free to sign my <a href="/guestbook/">guestbook</a>!
 </p>
 
 <div class="home-contact">
   <p>
-    Reach me at 
+    Reach me at
     <a href="mailto:pranav.m1205@gmail.com">pranav.m1205@gmail.com</a>
   </p>
 
@@ -36,4 +37,3 @@ title: "Pranav"
   </div>
 </div>
 </section>
-
