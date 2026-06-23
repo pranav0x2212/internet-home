@@ -8,7 +8,7 @@ collections:
 
 # RowClone - Copying Data Entirely Inside DRAM
 
-I have recently been reading about [Onur Mutlu's Primer on Processing-in-Memory](https://arxiv.org/abs/2012.03112) and one of the most fascinating Processing-Using-DRAM (PUM) ideas I came across recently is known as [RowClone](https://users.ece.cmu.edu/~omutlu/pub/rowclone_micro13.pdf).
+I have recently been reading about [Onur Mutlu's Primer on Processing-in-Memory](https://arxiv.org/abs/2012.03112) and one of the most fascinating Processing-Using-DRAM (PUM) ideas I came across recently is [RowClone](https://users.ece.cmu.edu/~omutlu/pub/rowclone_micro13.pdf).
 
 Modern systems perform a memory copy by moving data from DRAM, across the memory bus, through the CPU/cache hierarchy, and then back to the DRAM. Even though copying data requires no actual computation, 
 it still consumes enormous amount of bandwidth and energy, while introducing significant latency. 
