@@ -1,34 +1,39 @@
 {
   "navbar": [
     {
-      "Quick Start": "quick-start.html"
+      "Home": "index.html"
     },
     {
-      "Docs": "docs.html"
+      "Blog": "blogs/index.html"
     },
     {
-      "Dev Guide": "developer-guide.html"
+      "TIL": "til/index.html"
     },
     {
-      "Tags": "tags.html"
+      "Gallery": "gallery/index.html"
     },
     {
-      "Anna Blog": "posts/building-anna/index.html"
+      "About": "about/index.html"
+    },
+    {
+      "Guestbook": "guestbook/index.html"
     }
   ],
-  "baseURL": "https://anna-docs.netlify.app",
-  "siteTitle": "anna-docs",
+  "baseURL": "https://prawns.dev",
+  "siteTitle": "Pranav's Internet Home",
   "siteScripts": [],
-  "author": "anna",
+  "author": "Pranav",
   "themeURL": null,
-  "copyright": "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.",
+  "copyright": "© Pranav. All rights reserved.",
   "customFields": {
-    "Github": "https://github.com/anna-ssg/anna"
+    "GitHub": "https://github.com/pranav0x0112"
   },
-    "collectionLayouts": {
+  "collectionLayouts": {
     "blogs/index.html": "all-posts",
-    "projects/index.html": "all-posts",
+    "til/index.html": "all-posts",
     "collections/blogs.html": "all-posts",
+    "collections/til.html": "all-posts",
+    "projects/index.html": "all-posts",
     "collections/projects.html": "all-posts"
   }
 }
