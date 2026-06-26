@@ -8,7 +8,7 @@ collections:
 
 # SIMDRAM - Turning DRAM Into a Programmable SIMD Engine
 
-After reading [RowClone](https://prawns.dev/til/rowclone) and [Ambit](https://prawns.dev/til/ambit), to end the Processing-Using-Memory saga I wanna introduce you guys to a framework called [SIMDRAM](https://arxiv.org/abs/2105.12839). 
+After reading [RowClone](https://prawns.dev/til/rowclone) and [Ambit](https://prawns.dev/til/ambit), as we progress in the Processing-Using-Memory saga I wanna introduce you guys to a framework called [SIMDRAM](https://arxiv.org/abs/2105.12839). 
 
 If we recall from Ambit, it demonstrated that DRAM can perform logic operations using two primitive operations: Majority(MAJ) and NOT. Since MAJ and NOT form a functionally complete set, in theory any Boolean function could be
 implemented inside the DRAM. 
