@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "outputDirectory": "site/rendered",
   "routes": [
     {
