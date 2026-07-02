@@ -31,7 +31,7 @@ title: "Pranav"
   </p>
 
   <div class="contact-icons">
-    <a href="https://github.com/pranav0x0112" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/pranav0x2212" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/prawns/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://www.instagram.com/prawns_1205/" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
