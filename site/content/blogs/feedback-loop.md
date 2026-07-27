@@ -51,7 +51,7 @@ working together on more projects than I can count.
 College was also the first time I had to travel across the city by myself every day. The commute became a routine, but it would've been a lot less enjoyable without [Kathit](https://kathit-joshi.vercel.app/), who lived in the same 
 locality as me. Even today, most of our conversations are either about what we're working on or the newest food place he's discovered. 
 
-By the end of first year, a few more people had quietly became part of my life. Krithika and Nathan were among them. At that time, each one of them were just simply classmates and friends. Looking back now, each of them would  come to 
+By the end of first year, a few more people had quietly became part of my life. Krithika and [Nathan](https://polarhive.net/) were among them. At that time, each one of them were just simply classmates and friends. Looking back now, each of them would  come to 
 occupy a different place in my college journey. Some pushed me to grow, some became people I could always count on, and some simply made those four years a lot more memorable.
 
 ---
@@ -73,7 +73,7 @@ Whether it was something exciting or something that had gone terribly wrong, she
 
 > One of my favorite pieces by Manjari. We planned to post our respective artworks at the same time and this is a memorable one.
 
-On the other side of things, life was beginning to change in a different way. Around this time, Nathan became someone who quietly influenced the way I approached learning. He was one of the those people who always seemed to be a step ahead, 
+On the other side of things, life was beginning to change in a different way. Around this time, Nathan became someone who quietly influenced the way I approached learning. He was one of those people who always seemed to be a step ahead, 
 happily running Linux on his dual booted machine while the rest of us were terrified of breaking our Windows installations. I can't recall how many people he helped install Linux for the first time, patiently walking everyone through the process
 and answering the same set of questions over and over again.
 
@@ -160,7 +160,7 @@ And if you ask me, I'm fairly certain she'd defend me no matter what trouble I g
 
 > I'll always be their _Appu Kutta_ :)
 
-As I write this, I'm just getting ready for whatever comes next. Maybe it's graduate school, research or a corporate job or something I haven't even imagined yet. still don't have every answer, and honestly, I don't think I ever will.
+As I write this, I'm just getting ready for whatever comes next. Maybe it's graduate school, research or a corporate job or something I haven't even imagined yet. I still don't have every answer, and honestly, I don't think I ever will.
 What I do know is that a seventeen year old kid who entered engineering with no real roadmap finally found his place. Not because he was the smartest person in the room, but because he was surrounded by people who shared what they knew and believed in him.
 
 Looking back, maybe that's what these four years were really about. Every conversation, every piece of advice and every opportunity someone gave me eventually found its way back into something I built or shared with someone else. Maybe that's the real feedback loop!
