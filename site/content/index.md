@@ -27,7 +27,10 @@ title: "Pranav"
   </p>
 
   <p>
-    Download my resume <a href="/Pranav_Resume.pdf" target="_blank" rel="noopener">here</a>.
+    Download my
+    <a href="/Pranav_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    /
+    <a href="/Pranav_CV.pdf" target="_blank" rel="noopener">CV</a>.
   </p>
 
   <div class="contact-icons">
