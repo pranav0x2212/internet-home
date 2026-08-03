@@ -26,4 +26,5 @@ customFields:
   - baby_2.png: "chithi carrying me"
   - baby_3.jpg: "madhu and me"
   - m12_disassembled.jpg: "this phone saw everything"
+  - sky_6.jpg: "beautiful sky on a beautiful day"
 ---
