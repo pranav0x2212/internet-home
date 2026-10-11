@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" role="img" aria-label="Filter and refine: an EQUAL scan sets bits in the MATCH bitmap, SCANSEL then visits only the selected rows">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3a4256"/></marker></defs>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2430}
+.t{font-size:14px}.s{font-size:12px;fill:#4a5265}.h{font-size:16px;font-weight:600}.c{font-size:11px;text-anchor:middle}
+</style>
+<rect width="760" height="290" rx="10" fill="#f7f8fb"/>
+<text class="h" x="30" y="34">Filter and refine without leaving the engine</text>
+
+<text class="t" x="30" y="70">1. Predicate scan (EQUAL) over rows 0 to 15 sets bits in MATCH</text>
+<g stroke="#3a4256" fill="#ffffff">
+<rect x="30" y="82" width="36" height="30"/><rect x="66" y="82" width="36" height="30"/><rect x="102" y="82" width="36" height="30" fill="#ffe8cf" stroke="#d9822b"/><rect x="138" y="82" width="36" height="30"/>
+<rect x="174" y="82" width="36" height="30"/><rect x="210" y="82" width="36" height="30"/><rect x="246" y="82" width="36" height="30" fill="#ffe8cf" stroke="#d9822b"/><rect x="282" y="82" width="36" height="30"/>
+<rect x="318" y="82" width="36" height="30"/><rect x="354" y="82" width="36" height="30"/><rect x="390" y="82" width="36" height="30"/><rect x="426" y="82" width="36" height="30" fill="#ffe8cf" stroke="#d9822b"/>
+<rect x="462" y="82" width="36" height="30"/><rect x="498" y="82" width="36" height="30"/><rect x="534" y="82" width="36" height="30" fill="#ffe8cf" stroke="#d9822b"/><rect x="570" y="82" width="36" height="30"/>
+</g>
+<g class="c">
+<text x="48" y="102">0</text><text x="84" y="102">0</text><text x="120" y="102">1</text><text x="156" y="102">0</text><text x="192" y="102">0</text><text x="228" y="102">0</text><text x="264" y="102">1</text><text x="300" y="102">0</text>
+<text x="336" y="102">0</text><text x="372" y="102">0</text><text x="408" y="102">0</text><text x="444" y="102">1</text><text x="480" y="102">0</text><text x="516" y="102">0</text><text x="552" y="102">1</text><text x="588" y="102">0</text>
+</g>
+<text class="s" x="30" y="132">Four rows are selected in this example (k = 4). The bitmap stays in the MATCH register and is not sent out.</text>
+
+<path d="M318 142 V176" stroke="#3a4256" stroke-width="1.8" fill="none" marker-end="url(#a)"/>
+
+<text class="t" x="30" y="206">2. SCANSEL NEAREST with a new query visits only the selected rows</text>
+<g stroke="#3a4256" fill="#dbe7ff">
+<rect x="30" y="218" width="30" height="30" fill="#eceff5"/>
+<rect x="60" y="218" width="30" height="30" stroke="#3b6fd4"/><rect x="90" y="218" width="30" height="30" stroke="#3b6fd4"/><rect x="120" y="218" width="30" height="30" stroke="#3b6fd4"/><rect x="150" y="218" width="30" height="30" stroke="#3b6fd4"/>
+</g>
+<g class="c"><text x="45" y="237">go</text><text x="75" y="237">2</text><text x="105" y="237">6</text><text x="135" y="237">11</text><text x="165" y="237">14</text></g>
+<text class="s" x="200" y="237">1 + k = 5 cycles instead of 17. Result: best index, distance, count.</text>
+<text class="s" x="30" y="274">The selection is captured when SCANSEL issues, in ascending row order. If no bit is set, no row is read.</text>
+</svg>

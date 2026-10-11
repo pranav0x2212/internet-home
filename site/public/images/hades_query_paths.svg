@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" role="img" aria-label="Loading a 16 row tile costs 478 clocks, plus the loop program; a resident NEAREST query costs 24 clocks, of which 7 are interface">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2430}
+.t{font-size:14px}.s{font-size:12px;fill:#4a5265}.h{font-size:16px;font-weight:600}.c{font-size:12px;text-anchor:middle}
+</style>
+<rect width="760" height="410" rx="10" fill="#f7f8fb"/>
+<text class="h" x="30" y="34">Getting data in versus asking a question of resident data</text>
+
+<text class="t" x="30" y="72">Loading one 16-row tile, then the loop program</text>
+<rect x="30" y="84" width="430" height="40" fill="#ffe8cf" stroke="#d9822b"/>
+<text class="c" x="245" y="109">478 clocks: three programs (6, 6 and 4 rows)</text>
+<rect x="460" y="84" width="50" height="40" fill="#eceff5" stroke="#3a4256"/>
+<text class="s" x="520" y="108">+50 to 94 for the loop program</text>
+<text class="s" x="30" y="146">Each program is reset, loader bytes (2 clocks each), EXECUTE, then 4 RECV and 1 STA per row.</text>
+<text class="s" x="30" y="164">Data rows survive the resets, so after the third program the tile is resident.</text>
+
+<text class="t" x="30" y="210">One resident NEAREST query, same clock scale</text>
+<rect x="30" y="222" width="21.6" height="40" fill="#dbe7ff" stroke="#3b6fd4"/>
+<text class="s" x="62" y="248">24 clocks. A tile load is about 22 of these.</text>
+
+<text class="t" x="30" y="300">The same 24 clocks, enlarged</text>
+<g stroke="#3a4256">
+<rect x="30" y="312" width="80" height="44" fill="#eceff5"/>
+<rect x="110" y="312" width="340" height="44" fill="#dbe7ff" stroke="#3b6fd4"/>
+<rect x="450" y="312" width="40" height="44" fill="#eceff5"/>
+<rect x="490" y="312" width="20" height="44" fill="#eceff5"/>
+</g>
+<text class="c" x="70" y="339">4 RECV</text>
+<text class="c" x="280" y="339">scan: 17 cycles</text>
+<text class="s" x="470" y="378" style="text-anchor:middle">2 SEND</text>
+<text class="s" x="505" y="394" style="text-anchor:middle">1 BRANCH</text>
+<text class="s" x="530" y="339">7 of 24 are interface</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" role="img" aria-label="HADES memory map: words 0 to 15 hold data rows, words 16 to 31 hold the program, and three ports connect to the macro">
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3a4256"/></marker>
+</defs>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2430}
+.t{font-size:15px}.s{font-size:12.5px;fill:#4a5265}.h{font-size:16px;font-weight:600}
+</style>
+<rect width="760" height="500" rx="10" fill="#f7f8fb"/>
+<text class="h" x="30" y="36">One register file macro, 32 words of 32 bits</text>
+
+<!-- data region -->
+<rect x="30" y="60" width="330" height="184" rx="6" fill="#dbe7ff" stroke="#3b6fd4" stroke-width="1.5"/>
+<text class="h" x="46" y="86">Words 0 to 15: data rows</text>
+<text class="s" x="46" y="105">16 words x 32 bits = 64 bytes</text>
+<g fill="#ffffff" stroke="#3b6fd4">
+<rect x="46" y="116" width="298" height="26" rx="3"/><rect x="46" y="148" width="298" height="26" rx="3"/><rect x="46" y="202" width="298" height="26" rx="3"/>
+</g>
+<text class="t" x="58" y="134">row 0 (32 bits)</text>
+<text class="t" x="58" y="166">row 1</text>
+<text class="t" x="190" y="193">...</text>
+<text class="t" x="58" y="220">row 15</text>
+
+<!-- program region -->
+<rect x="30" y="262" width="330" height="224" rx="6" fill="#ffe8cf" stroke="#d9822b" stroke-width="1.5"/>
+<text class="h" x="46" y="288">Words 16 to 31: program</text>
+<text class="s" x="46" y="307">16 words x 32 bits = 64 bytes</text>
+<text class="s" x="46" y="325">two 16-bit instructions per word, 32 slots in all</text>
+<rect x="46" y="336" width="298" height="30" rx="3" fill="#ffffff" stroke="#d9822b"/>
+<line x1="195" y1="336" x2="195" y2="366" stroke="#d9822b"/>
+<text class="t" x="62" y="356">odd slot [31:16]</text>
+<text class="t" x="206" y="356">even slot [15:0]</text>
+<text class="s" x="46" y="388">word 16 holds slots 0 and 1, word 17 slots 2 and 3,</text>
+<text class="s" x="46" y="406">and so on up to word 31 (slots 30 and 31).</text>
+<text class="s" x="46" y="436">Reset refills every slot with HALT.</text>
+<text class="s" x="46" y="454">Data rows survive reset; the program does not.</text>
+
+<!-- ports -->
+<g stroke="#3a4256" stroke-width="1.8" fill="none" marker-end="url(#a)">
+<path d="M500 145 H362"/>
+<path d="M500 390 H362"/>
+</g>
+<rect x="500" y="110" width="240" height="70" rx="6" fill="#ffffff" stroke="#3a4256"/>
+<text class="h" x="516" y="134">Read port B</text>
+<text class="s" x="516" y="153">data rows for scans and loads</text>
+<text class="s" x="516" y="170">(32 bits wide)</text>
+
+<rect x="500" y="355" width="240" height="70" rx="6" fill="#ffffff" stroke="#3a4256"/>
+<text class="h" x="516" y="379">Read port A</text>
+<text class="s" x="516" y="398">instruction fetch, addressed by</text>
+<text class="s" x="516" y="415">the next PC (32 bits wide)</text>
+
+<rect x="500" y="440" width="240" height="46" rx="6" fill="#eceff5" stroke="#3a4256"/>
+<text class="s" x="516" y="460">Write port: init, loader, STA</text>
+<text class="s" x="516" y="477">(priority in that order)</text>
+</svg>

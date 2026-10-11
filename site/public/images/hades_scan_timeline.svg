@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-label="Sixteen row scan: SCAN takes 17 cycles reading one row per cycle; SCANP takes 9 cycles reading two rows per cycle for EQUAL, REDUCE_OR and REDUCE_AND">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2430}
+.t{font-size:14px}.s{font-size:12px;fill:#4a5265}.h{font-size:16px;font-weight:600}.c{font-size:11px;text-anchor:middle}
+</style>
+<rect width="760" height="330" rx="10" fill="#f7f8fb"/>
+<text class="h" x="30" y="34">The same sixteen rows, one cycle per box</text>
+
+<text class="t" x="30" y="76">SCAN (any operation): 17 cycles</text>
+<g stroke="#3b6fd4" fill="#dbe7ff">
+<rect x="30" y="88" width="30" height="34" fill="#eceff5" stroke="#3a4256"/>
+<rect x="60" y="88" width="30" height="34"/><rect x="90" y="88" width="30" height="34"/><rect x="120" y="88" width="30" height="34"/><rect x="150" y="88" width="30" height="34"/>
+<rect x="180" y="88" width="30" height="34"/><rect x="210" y="88" width="30" height="34"/><rect x="240" y="88" width="30" height="34"/><rect x="270" y="88" width="30" height="34"/>
+<rect x="300" y="88" width="30" height="34"/><rect x="330" y="88" width="30" height="34"/><rect x="360" y="88" width="30" height="34"/><rect x="390" y="88" width="30" height="34"/>
+<rect x="420" y="88" width="30" height="34"/><rect x="450" y="88" width="30" height="34"/><rect x="480" y="88" width="30" height="34"/><rect x="510" y="88" width="30" height="34"/>
+</g>
+<g class="c">
+<text x="45" y="110">go</text>
+<text x="75" y="110">0</text><text x="105" y="110">1</text><text x="135" y="110">2</text><text x="165" y="110">3</text>
+<text x="195" y="110">4</text><text x="225" y="110">5</text><text x="255" y="110">6</text><text x="285" y="110">7</text>
+<text x="315" y="110">8</text><text x="345" y="110">9</text><text x="375" y="110">10</text><text x="405" y="110">11</text>
+<text x="435" y="110">12</text><text x="465" y="110">13</text><text x="495" y="110">14</text><text x="525" y="110">15</text>
+</g>
+<text class="s" x="30" y="142">Port B delivers one data row per cycle. Port A is only fetching the next instruction.</text>
+
+<text class="t" x="30" y="190">SCANP with EQUAL, REDUCE_OR or REDUCE_AND: 9 cycles</text>
+<g stroke="#3b6fd4" fill="#dbe7ff">
+<rect x="30" y="202" width="30" height="58" fill="#eceff5" stroke="#3a4256"/>
+<rect x="60" y="202" width="30" height="29"/><rect x="90" y="202" width="30" height="29"/><rect x="120" y="202" width="30" height="29"/><rect x="150" y="202" width="30" height="29"/>
+<rect x="180" y="202" width="30" height="29"/><rect x="210" y="202" width="30" height="29"/><rect x="240" y="202" width="30" height="29"/><rect x="270" y="202" width="30" height="29"/>
+</g>
+<g stroke="#d9822b" fill="#ffe8cf">
+<rect x="60" y="231" width="30" height="29"/><rect x="90" y="231" width="30" height="29"/><rect x="120" y="231" width="30" height="29"/><rect x="150" y="231" width="30" height="29"/>
+<rect x="180" y="231" width="30" height="29"/><rect x="210" y="231" width="30" height="29"/><rect x="240" y="231" width="30" height="29"/><rect x="270" y="231" width="30" height="29"/>
+</g>
+<g class="c">
+<text x="45" y="236">go</text>
+<text x="75" y="221">0</text><text x="105" y="221">2</text><text x="135" y="221">4</text><text x="165" y="221">6</text>
+<text x="195" y="221">8</text><text x="225" y="221">10</text><text x="255" y="221">12</text><text x="285" y="221">14</text>
+<text x="75" y="250">1</text><text x="105" y="250">3</text><text x="135" y="250">5</text><text x="165" y="250">7</text>
+<text x="195" y="250">9</text><text x="225" y="250">11</text><text x="255" y="250">13</text><text x="285" y="250">15</text>
+</g>
+<text class="s" x="316" y="221">upper box: row on port B</text>
+<text class="s" x="316" y="250">lower box: row on port A</text>
+<text class="s" x="30" y="284">The second row only goes through a masked XOR and AND network and a zero detector.</text>
+<text class="s" x="30" y="304">There is no second popcount tree, so NEAREST, WITHIN and the popcount operations stay at 17.</text>
+</svg>
