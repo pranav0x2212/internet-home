@@ -8,7 +8,7 @@ tags:
   - processing-near-memory
   - tiny-tapeout
   - open-source-silicon
-description: "An idle memory port, a tiny instruction set, and a surprising bottleneck: the engineering decisions behind my second Tiny Tapeout project."
+description: "A programmable processing-near-memory engine for binary similarity search, built around a tiny instruction set and an idle memory port."
 permalink: posts/{{ title | slug }}/index.html
 author_name: M Pranav
 author_link: "https://github.com/pranav0x2212"
