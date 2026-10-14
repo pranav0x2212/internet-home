@@ -218,7 +218,7 @@ What I would most like to learn is how the engine holds up against tuned baselin
 
 The full ISA, cycle model, verification and evaluation methodology are in the [paper](https://arxiv.org/abs/2610.14677).
 
-Thank you to the [Tiny Tapeout](https://tinytapeout.com/) team and community for building an open flow that makes projects like this possible, and to Sylvain Munaut for the [`rf_top` register-file macro](https://tinytapeout.com/chips/ttsky25a/tt_um_tnt_rf_test) that the whole design is built around. The port-allocation story above only exists because there was a shared macro to build on.
+Thank you to the [Tiny Tapeout](https://tinytapeout.com/) team and community for building an open flow that makes projects like this possible, and to Sylvain Munaut for the [`rf_top` register-file macro](https://wiki.f-si.org/index.php?title=RV32_register_file_design_on_SKY130:_a_novice%27s_approach) that the whole design is built around. The port-allocation story above only exists because there was a shared macro to build on.
 
 ---
 
