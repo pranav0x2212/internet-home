@@ -216,7 +216,7 @@ Once loading the dataset and program is counted, a single query loses to the ESP
 
 What I would most like to learn is how the engine holds up against tuned baselines, and whether a data path that bypasses the program stream would shrink the loading cost that dominated the end-to-end numbers. That would be a different design, and I have not built it.
 
-The full ISA, cycle model, verification and evaluation methodology are in the paper.
+The full ISA, cycle model, verification and evaluation methodology are in the [paper](https://arxiv.org/abs/2610.14677).
 
 Thank you to the [Tiny Tapeout](https://tinytapeout.com/) team and community for building an open flow that makes projects like this possible, and to Sylvain Munaut for the [`rf_top` register-file macro](https://tinytapeout.com/chips/ttsky25a/tt_um_tnt_rf_test) that the whole design is built around. The port-allocation story above only exists because there was a shared macro to build on.
 
