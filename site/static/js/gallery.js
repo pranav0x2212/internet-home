@@ -7,6 +7,15 @@
     const nextBtn = document.querySelector('.lightbox-next');
     const thumbnails = document.querySelectorAll('.gallery-thumbnail');
 
+    // Set each item's aspect ratio up front so rows can be justified before images finish loading
+    thumbnails.forEach((thumbnail) => {
+        const probe = new Image();
+        probe.onload = () => {
+            thumbnail.parentElement.style.setProperty('--ar', probe.naturalWidth / probe.naturalHeight);
+        };
+        probe.src = thumbnail.getAttribute('src');
+    });
+
     let currentIndex = 0;
     let totalImages = thumbnails.length;
     let captionsMap = {}; // Store custom captions from JSON
