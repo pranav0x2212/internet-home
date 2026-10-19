@@ -5,7 +5,6 @@ customFields:
   - sky_2.jpeg: "this sky felt unreal that evening"
   - cat_1.jpg: "orange marshmallow"
   - aura_farm_1.jpg: "Tilde gng"
-  - baby_1.jpg: "bald prawns"
   - car_1.jpeg: "cool porsche"
   - drawing_1.jpg: "pencil sketch"
   - drawing_2.jpeg: "pencil sketch"
@@ -23,8 +22,7 @@ customFields:
   - sky_5.jpg: "svg sunset"
   - tree_1.jpg: "cherry blossom"
   - spidey.jpg: "it's me"
-  - baby_2.png: "chithi carrying me"
-  - baby_3.jpg: "madhu and me"
   - m12_disassembled.jpg: "this phone saw everything"
   - sky_6.jpg: "beautiful sky on a beautiful day"
+  - hot_choco.jpg: "hot choco with jells"
 ---
