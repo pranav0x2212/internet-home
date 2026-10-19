@@ -547,20 +547,30 @@ img[src*="minato"] {
 }
 
 .gallery-grid {
-    column-count: 2;
-    column-gap: 16px;
+    --row-height: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 1.5rem;
 }
 
+/* keeps the last row from stretching to full width */
+.gallery-grid::after {
+    content: "";
+    flex-grow: 100;
+}
+
+/* justified rows: width scales with aspect ratio (--ar, set in gallery.js) so each row ends up the same height */
 .gallery-item {
-    display: inline-block;
-    width: 100%;
-    margin: 0 0 16px;
+    --ar: 1.33;
+    margin: 0;
+    flex: var(--ar) 1 calc(var(--ar) * var(--row-height));
 }
 
 .gallery-item img {
     width: 100%;
     height: auto;
+    aspect-ratio: var(--ar);
     display: block;
     border-radius: 6px;
     transition: opacity 0.2s ease;
@@ -572,7 +582,8 @@ img[src*="minato"] {
 
 @media (max-width: 768px) {
     .gallery-grid {
-        column-count: 1;
+        --row-height: 150px;
+        gap: 10px;
     }
 }
 
