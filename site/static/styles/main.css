@@ -3244,3 +3244,27 @@ nav {
     background: transparent !important;
 }
 
+
+/* Mobile footer: stack badges, credit, copyright and webring, centered */
+@media (max-width: 700px) {
+    .site-footer .footer-inner {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .site-footer .footer-badges {
+        width: 100%;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+    }
+
+    .site-footer .footer-badge-credit {
+        width: 100%;
+    }
+}
+
+/* Footer badges: cancel the global img auto margins that skew flex spacing */
+.footer-badges img {
+    margin: 0 !important;
+}
