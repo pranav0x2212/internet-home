@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 444" role="img" aria-label="The 56.3 ns, 70-level critical path split into three chained parts: oldest-ready selection about 27 ns, Sv32 page walk about 8 ns, store forwarding and extraction about 20 ns">
+<style>text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#e6eaf2;font-size:14.5px}.d{fill:#9aa6bd;font-size:13.5px}.h{font-size:16px;font-weight:600}.b{font-weight:600}.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}.c{text-anchor:middle}.e{text-anchor:end}.o{fill:#f0a35e}.g{fill:#6fcf97}.bl{fill:#7aa2ff}</style>
+<defs><marker id="ad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6bd"/></marker><marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7aa2ff"/></marker><marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f0a35e"/></marker><marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6fcf97"/></marker></defs>
+<rect width="560" height="444" rx="10" fill="#1b2132" stroke="#2c3550"/>
+<text class="h" x="24" y="32">One path, three jobs, one clock cycle</text>
+<text class="d" x="24" y="52">From a memory queue payload register to the load result queue: 56.3 ns, 70 logic levels</text>
+<text class="d" x="24" y="76">payload register</text>
+<text class="d e" x="536" y="76">result queue</text>
+<rect x="24.0" y="84" width="245.5" height="30" fill="#7aa2ff" fill-opacity="0.85" stroke="#1b2132" stroke-width="2"/>
+<text class="c b" style="fill:#12192b" x="146.8" y="104">27 ns</text>
+<rect x="269.5" y="84" width="72.8" height="30" fill="#6fcf97" fill-opacity="0.85" stroke="#1b2132" stroke-width="2"/>
+<text class="c b" style="fill:#12192b" x="305.9" y="104">8 ns</text>
+<rect x="342.3" y="84" width="181.9" height="30" fill="#f0a35e" fill-opacity="0.85" stroke="#1b2132" stroke-width="2"/>
+<text class="c b" style="fill:#12192b" x="433.2" y="104">20 ns</text>
+<rect x="524.2" y="84" width="11.8" height="30" fill="#3a4668" fill-opacity="0.85" stroke="#1b2132" stroke-width="2"/>
+<rect x="24" y="150" width="512" height="70" rx="6" fill="#252d44" stroke="#3a4668"/>
+<rect x="24" y="150" width="5" height="70" rx="2" fill="#7aa2ff"/>
+<text class="b" x="44" y="174">1. Pick the oldest ready memory operation</text>
+<text class="d" x="44" y="194">The 8-entry for loop, unrolled into 7 comparators</text>
+<text class="d" x="44" y="211">in series: about 28 levels</text>
+<path d="M146.77087033747782 114L146.77087033747782 124" stroke="#7aa2ff" stroke-width="1.5" fill="none"/>
+<path d="M280 220L280 250" stroke="#9aa6bd" stroke-width="1.6" fill="none" marker-end="url(#ad)"/>
+<text class="d" x="292" y="239">its address feeds the translation</text>
+<rect x="24" y="250" width="512" height="70" rx="6" fill="#252d44" stroke="#3a4668"/>
+<rect x="24" y="250" width="5" height="70" rx="2" fill="#6fcf97"/>
+<text class="b" x="44" y="274">2. Translate the address (Sv32)</text>
+<text class="d" x="44" y="294">Two dependent adds and two RAM reads for the</text>
+<text class="d" x="44" y="311">two-level page table walk</text>
+<path d="M305.91829484902314 114L305.91829484902314 124" stroke="#6fcf97" stroke-width="1.5" fill="none"/>
+<path d="M280 320L280 350" stroke="#9aa6bd" stroke-width="1.6" fill="none" marker-end="url(#ad)"/>
+<text class="d" x="292" y="339">the physical address feeds the match</text>
+<rect x="24" y="350" width="512" height="70" rx="6" fill="#252d44" stroke="#3a4668"/>
+<rect x="24" y="350" width="5" height="70" rx="2" fill="#f0a35e"/>
+<text class="b" x="44" y="374">3. Forward from the store queue and extract</text>
+<text class="d" x="44" y="394">Merge bytes from older stores in the queue,</text>
+<text class="d" x="44" y="411">then sign extend the result</text>
+<path d="M433.2362344582594 114L433.2362344582594 124" stroke="#f0a35e" stroke-width="1.5" fill="none"/>
+</svg>

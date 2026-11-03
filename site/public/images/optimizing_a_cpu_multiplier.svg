@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 512" role="img" aria-label="Multiplier path before and after the DSP48E1 PREG stage: before, the product reaches the response queue in the same cycle; after, it is registered in cycle t and drained into the response queue in cycle t+1">
+<style>text{font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#e6eaf2;font-size:14.5px}.d{fill:#9aa6bd;font-size:13.5px}.h{font-size:16px;font-weight:600}.b{font-weight:600}.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}.c{text-anchor:middle}.e{text-anchor:end}.o{fill:#f0a35e}.g{fill:#6fcf97}.bl{fill:#7aa2ff}</style>
+<defs><marker id="ad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa6bd"/></marker><marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7aa2ff"/></marker><marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f0a35e"/></marker><marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6fcf97"/></marker></defs>
+<rect width="560" height="512" rx="10" fill="#1b2132" stroke="#2c3550"/>
+<text class="h" x="24" y="32">Giving the multiplier a second cycle</text>
+<text class="b o" x="24" y="64">Before: one cycle, about 9.86 ns, 76% logic</text>
+<rect x="16" y="74" width="528" height="84" rx="8" fill="none" stroke="#f0a35e" stroke-dasharray="6 4"/>
+<rect x="28" y="92" width="86" height="50" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="71.0" y="113.5">ALU</text>
+<text class="c d" x="71.0" y="130.5">operands</text>
+<rect x="130" y="92" width="86" height="50" rx="5" fill="#4a3523" stroke="#f0a35e" stroke-width="1.2"/>
+<text class="c " x="173.0" y="113.5">2× DSP</text>
+<text class="c d" x="173.0" y="130.5">cascade</text>
+<path d="M115 117L129 117" stroke="#f0a35e" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+<rect x="232" y="92" width="86" height="50" rx="5" fill="#4a3523" stroke="#f0a35e" stroke-width="1.2"/>
+<text class="c " x="275.0" y="113.5">carry-chain</text>
+<text class="c d" x="275.0" y="130.5">adder</text>
+<path d="M217 117L231 117" stroke="#f0a35e" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+<rect x="334" y="92" width="86" height="50" rx="5" fill="#4a3523" stroke="#f0a35e" stroke-width="1.2"/>
+<text class="c " x="377.0" y="113.5">a few</text>
+<text class="c d" x="377.0" y="130.5">LUTs</text>
+<path d="M319 117L333 117" stroke="#f0a35e" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+<rect x="436" y="92" width="86" height="50" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="479.0" y="113.5">response</text>
+<text class="c d" x="479.0" y="130.5">queue</text>
+<path d="M421 117L435 117" stroke="#f0a35e" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+<text class="b g" x="24" y="196">After: the product is registered, then drained next cycle</text>
+<rect x="16" y="206" width="278" height="84" rx="8" fill="none" stroke="#6fcf97" stroke-dasharray="6 4"/>
+<rect x="306" y="206" width="238" height="84" rx="8" fill="none" stroke="#6fcf97" stroke-dasharray="6 4"/>
+<text class="d e" x="284" y="224">cycle t</text>
+<text class="d e" x="534" y="224">cycle t+1</text>
+<rect x="28" y="232" width="90" height="50" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="73.0" y="253.5">ALU</text>
+<text class="c d" x="73.0" y="270.5">operands</text>
+<path d="M118 257L146 257" stroke="#6fcf97" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
+<rect x="146" y="232" width="138" height="50" rx="5" fill="#1f4032" stroke="#6fcf97" stroke-width="1.2"/>
+<text class="c " x="215.0" y="253.5">2× DSP48E1</text>
+<text class="c d" x="215.0" y="270.5">PREG + mulResult</text>
+<path d="M284 257L318 257" stroke="#6fcf97" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
+<rect x="318" y="232" width="100" height="50" rx="5" fill="#1f4032" stroke="#6fcf97" stroke-width="1.2"/>
+<text class="c " x="368.0" y="253.5">mulDrain</text>
+<text class="c d" x="368.0" y="270.5">rule</text>
+<path d="M418 257L440 257" stroke="#6fcf97" stroke-width="1.6" fill="none" marker-end="url(#ag)"/>
+<rect x="440" y="232" width="92" height="50" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="486.0" y="253.5">response</text>
+<text class="c d" x="486.0" y="270.5">queue</text>
+<text class="d" x="24" y="318">PREG is a register inside the DSP, so no LUTs are wrapped around it.</text>
+<text class="d" x="24" y="336">Overall cost: about 120 LUTs and 115 flip-flops.</text>
+<text class="b" x="24" y="376">What the rest of the core sees</text>
+<text class="d c" x="188.0" y="402">cycle t</text>
+<text class="d c" x="310.0" y="402">cycle t+1</text>
+<text class="d c" x="432.0" y="402">cycle t+2</text>
+<text class="d" x="24" y="430">Before</text>
+<text class="d" x="24" y="478">After</text>
+<rect x="130" y="412" width="116" height="36" rx="5" fill="#4a3523" stroke="#f0a35e" stroke-width="1.2"/>
+<text class="c " x="188.0" y="426.5">MUL executes</text>
+<text class="c d" x="188.0" y="443.5">result queued</text>
+<rect x="252" y="412" width="116" height="36" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="310.0" y="435.0">ALU free</text>
+<rect x="130" y="460" width="116" height="36" rx="5" fill="#1f4032" stroke="#6fcf97" stroke-width="1.2"/>
+<text class="c " x="188.0" y="474.5">MUL executes</text>
+<text class="c d" x="188.0" y="491.5">mulResult set</text>
+<rect x="252" y="460" width="116" height="36" rx="5" fill="#1f4032" stroke="#6fcf97" stroke-width="1.2"/>
+<text class="c " x="310.0" y="474.5">result queued</text>
+<text class="c d" x="310.0" y="491.5">ALU blocked</text>
+<rect x="374" y="460" width="116" height="36" rx="5" fill="#252d44" stroke="#3a4668" stroke-width="1.2"/>
+<text class="c " x="432.0" y="483.0">ALU free</text>
+</svg>
