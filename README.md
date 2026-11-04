@@ -1,50 +1,15 @@
-# Anna
+# prawns.dev
 
-[![Test Workflow](https://github.com/anna-ssg/anna/actions/workflows/tests.yml/badge.svg)](https://github.com/anna-ssg/anna/actions/workflows/tests.yml)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/09b8bdf3-5931-4295-9fe7-d463d5d06a3f/deploy-status)](https://app.netlify.com/sites/anna-docs/deploys)
-[![Go Reference](https://pkg.go.dev/badge/github.com/anna-ssg/v3/anna.svg)](https://pkg.go.dev/github.com/anna-ssg/anna/v3)
-[![GitHub Repo Stars](https://img.shields.io/github/stars/anna-ssg/Anna?style=flat-square&label=Stars&color=lightgreen&logo=github)](https://github.com/anna-ssg/anna)
+My personal website, built with [anna](https://github.com/anna-ssg/anna).
 
-```text
-    ___
-   /   |  ____  ____  ____ _
-  / /| | / __ \/ __ \/ __ `/
- / ___ |/ / / / / / / /_/ /
-/_/  |_/_/ /_/_/ /_/\__,_/
+## Adding something
 
-A static site generator in go
-```
+- Blog post: add a Markdown file in `site/content/blogs/`.
+- TIL note: add a Markdown file in `site/content/til/`.
+- Photo: drop it in `site/public/images/` and add a line for it in `site/content/gallery/index.md`.
 
-Inspired by [Hugo](https://gohugo.io) and [Saaru](https://github.com/anirudhRowjee/saaru), this static site generator aims to take performance to the next level with parallel rendering, live reload and so much more, all in Go.
-
-> Pronounced: `/ɐnːɐ/` which means rice 🍚 in Kannada
-
----
-
-## Get Started
+Copy the front matter (the block at the top between `---`) from an existing post, then preview with:
 
 ```sh
-go run github.com/anna-ssg/anna/v3@v3.0.0 -s './'
+anna -s
 ```
-
-> To setup your site, follow the quick-start [guide](https://anna-docs.netlify.app/quick-start)
-
-## Contributing to Anna
-
-If you have git installed, clone our repository and build against the latest commit
-
-```sh
-git clone github.com/anna-ssg/anna
-cd anna
-make build
-```
-
-### Developer Guide
-
-Detailed documentation for developers can be found [here](https://anna-docs.netlify.app/developer-guide)
-
----
-
-### History
-
-> *This project was a part of the ACM PESU-ECC's yearly [AIEP](https://acmpesuecc.github.io/aiep) program, and is maintained by [Adhesh Athrey](https://github.com/DedLad), [Nathan Paul](https://github.com/polarhive), [Anirudh Sudhir](https://github.com/anirudhsudhir), and [Aditya Hegde](https://github.com/bwaklog)* my goats

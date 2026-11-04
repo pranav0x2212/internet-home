@@ -1,17 +1,7 @@
-anna*
-!anna/
-*.exe
+# anna binary (downloaded by deploy.sh) and build output
+/anna
+site/rendered/
 
-
-**/.DS_Store
-*.prof
-anna.test
-*.cpu
-dist/
+# editor / OS junk
+.DS_Store
 .idea/
-
-#Test directories
-test/**/static/
-test/**/got_sitemap.xml
-tmp/
-site/rendered

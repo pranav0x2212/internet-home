@@ -3,18 +3,10 @@ set -euo pipefail
 REPO="anna-ssg/anna"
 ARCH="Linux_x86_64"
 
-echo "Fetching latest release info for $REPO..."
-LATEST_TAG=$(
-  curl -s https://api.github.com/repos/$REPO/releases/latest \
-  | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p'
-)
+# Pinned so a new upstream release can't break the deploy; bump deliberately.
+LATEST_TAG="v4.0.0"
 
-if [[ -z "$LATEST_TAG" ]]; then
-  echo "Failed to determine latest release tag"
-  exit 1
-fi
-
-echo "Latest release: $LATEST_TAG"
+echo "Using anna $LATEST_TAG"
 TARBALL="anna_${ARCH}.tar.gz"
 URL="https://github.com/$REPO/releases/download/$LATEST_TAG/$TARBALL"
 
