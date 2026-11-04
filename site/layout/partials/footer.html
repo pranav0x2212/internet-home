@@ -1,67 +1,18 @@
 {{define "footer"}}
 <footer class="site-footer">
     <div class="container footer-inner">
-        <div class="footer-badges" style="display:flex; flex-wrap:wrap; justify-content:flex-start; gap:0.5rem; margin-bottom:0.75rem;">
-            <img src="/badges/footers/human.svg" alt="human" width="88" height="31" style="display:block; width:88px; height:31px;">
-            <a href="/about/" target="_self" rel="noopener">
-                <img class="guitar-badge" src="/badges/footers/guitar.png" alt="Pranav — code & guitar" width="88" height="31" style="display:block; width:88px; height:31px;">
-            </a>
-            <a href="https://wiki.archlinux.org/title/Installation_guide" target="_blank" rel="noopener noreferrer">
-                <img src="/badges/footers/archlinux.gif" alt="archlinux" width="88" height="31" style="display:block; width:88px; height:31px;">
-            </a>
-            <a href="https://caffcalc.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/badges/footers/PoweredByCoffee.gif" alt="Powered By Coffee" width="88" height="31" style="display:block; width:88px; height:31px;">
-            </a>
-            <a href="https://www.zerotoasiccourse.com/terminology/asic/" target="_blank" rel="noopener noreferrer">
-                <img src="/badges/footers/asic.gif" alt="asic" width="88" height="31" style="display:block; width:88px; height:31px;">
-            </a>
-            <a href="https://tinytapeout.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/badges/footers/tt.gif" alt="tinytapeout" width="88" height="31" style="display:block; width:88px; height:31px;">
-            </a>
+        <div class="footer-badges">
+            <img src="/badges/footers/human.svg" alt="human" width="88" height="31">
+            <a href="/about/"><img src="/badges/footers/guitar.png" alt="Pranav — code & guitar" width="88" height="31"></a>
+            <a href="https://wiki.archlinux.org/title/Installation_guide" target="_blank" rel="noopener noreferrer"><img src="/badges/footers/archlinux.gif" alt="archlinux" width="88" height="31"></a>
+            <a href="https://caffcalc.com/" target="_blank" rel="noopener noreferrer"><img src="/badges/footers/PoweredByCoffee.gif" alt="Powered By Coffee" width="88" height="31"></a>
+            <a href="https://www.zerotoasiccourse.com/terminology/asic/" target="_blank" rel="noopener noreferrer"><img src="/badges/footers/asic.gif" alt="asic" width="88" height="31"></a>
+            <a href="https://tinytapeout.com/" target="_blank" rel="noopener noreferrer"><img src="/badges/footers/tt.gif" alt="tinytapeout" width="88" height="31"></a>
         </div>
-        <div class="footer-badge-credit" style="margin-bottom:0.75rem; text-align:center; font-size:0.9rem; color:var(--color-text-dim);">
-            Web badges inspired by <a href="https://essenceia.github.io/" target="_blank" rel="noopener noreferrer">Julia Desmazes</a>
-        </div>
-        <div class="copyright" style="width:100%; text-align:center;">Rendered using <a href="https://github.com/anna-ssg/anna">anna</a> 💙</div>
-
-        <!-- Homebrew Webring: replace homebrew.hsp-ec.xyz with your site domain -->
-        <div class="webring-links" style="width:100%; text-align:center; margin-top:0.75rem;">
-            <a href="https://homebrew.hsp-ec.xyz/ring/prev?site=https://prawns.dev" class="webring-arrow">←</a>
-            <a href="https://homebrew.hsp-ec.xyz/webring" class="webring-text">homebrew webring</a>
-            <a href="https://homebrew.hsp-ec.xyz/ring/next?site=https://prawns.dev" class="webring-arrow">→</a>
-        </div>
+        <p class="footer-line">Rendered with <a href="https://github.com/anna-ssg/anna">anna</a>. Badges inspired by <a href="https://essenceia.github.io/" target="_blank" rel="noopener noreferrer">Julia Desmazes</a>.</p>
+        <p class="footer-line">
+            <a href="https://homebrew.hsp-ec.xyz/ring/prev?site=https://prawns.dev" class="webring-arrow">←</a>homebrew webring<a href="https://homebrew.hsp-ec.xyz/ring/next?site=https://prawns.dev" class="webring-arrow">→</a>
+        </p>
     </div>
-    <script>/* set current year client-side to avoid template helpers */(function () { var el = document.getElementById('site-year'); if (el) el.textContent = new Date().getFullYear(); })();
-
-        /* mobile nav toggle */
-        (function () {
-            var ham = document.getElementById('hamburger'); if (!ham) return;
-
-            function setNavStateOnLoadOrResize() {
-                // Desktop: ensure the nav is visible (handled by CSS) and ensure mobile nav is closed
-                if (window.innerWidth > 700) {
-                    document.body.classList.remove('nav-open');
-                    ham.setAttribute('aria-expanded', 'false');
-                } else {
-                    // Mobile: default closed
-                    document.body.classList.remove('nav-open');
-                    ham.setAttribute('aria-expanded', 'false');
-                }
-            }
-
-            function toggleNav() {
-                var isOpen = document.body.classList.toggle('nav-open');
-                ham.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            }
-
-            // initialize state on load
-            setNavStateOnLoadOrResize();
-
-            ham.addEventListener('click', toggleNav);
-            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { document.body.classList.remove('nav-open'); ham.setAttribute('aria-expanded', 'false'); } });
-            window.addEventListener('resize', setNavStateOnLoadOrResize);
-            // close when clicking outside the header/nav
-            document.addEventListener('click', function (e) { if (!document.body.classList.contains('nav-open')) return; if (!e.target.closest || !e.target.closest('.site-header')) { document.body.classList.remove('nav-open'); ham.setAttribute('aria-expanded', 'false'); } });
-        })();</script>
 </footer>
 {{end}}

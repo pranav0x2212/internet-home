@@ -6,6 +6,8 @@
     {{template "header" .}}
     <main class="container site-main" role="main">
         <article class="content">
+            <h1 class="collection-title">Tags</h1>
+            <div id="tag-graph" class="tag-graph"></div>
             <section class="posts">
                 <div class="all-tags">
                     {{range .TagNames}}
@@ -15,6 +17,8 @@
             </section>
         </article>
     </main>
+
+    <script defer src="/static/js/tag-graph.js"></script>
 
     {{template "footer" .}}
 

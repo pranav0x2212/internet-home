@@ -17,6 +17,11 @@
     <script defer src="/static/js/admonitions.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+    <!-- Signature font: subset to just the letters in "Pranav", so it is a tiny download -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Over+the+Rainbow&display=swap&text=Pranav" />
+
     <!-- Favicons -->
     <link rel="icon" href="/static/images/heart-favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/static/images/heart-favicon.svg" />
@@ -46,10 +51,16 @@
     <script src="/static/scripts/{{.}}" defer></script>
     {{end}}
 
+    <!-- Link previews (Discord, WhatsApp, LinkedIn, ...). Posts get a generated card via
+         `previewimage:` in their front matter, see scripts/og.py; everything else gets the default. -->
+    {{ $Base := .DeepDataMerge.LayoutConfig.BaseURL }}
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pranav's Internet Home" />
     <meta property="og:title" content="{{ $PageData.Frontmatter.Title }}" />
     <meta property="og:description" content="{{ $PageData.Frontmatter.Description }}" />
-    <meta property="og:image" content="{{ $PageData.Frontmatter.PreviewImage }}" />
+    <meta property="og:url" content="{{ $Base }}/{{ .PageURL }}" />
+    <meta property="og:image" content="{{ $Base }}{{ if $PageData.Frontmatter.PreviewImage }}{{ $PageData.Frontmatter.PreviewImage }}{{ else }}/og/default.png{{ end }}" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="description" content="{{ $PageData.Frontmatter.Description }}" />
 
