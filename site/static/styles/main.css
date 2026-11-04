@@ -1,5 +1,3 @@
-/* prawns.dev — one font, one accent colour, one content width.
-   Everything page-specific lives at the bottom. */
 
 :root {
     --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -16,8 +14,6 @@
     --inline-code-bg: rgba(255, 255, 255, 0.05);
     --content-width: 42rem;
 }
-
-/* ---------- base ---------- */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -71,8 +67,6 @@ table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.9
 th, td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--color-border); text-align: left; }
 th { font-weight: 600; }
 
-/* ---------- code ---------- */
-
 code { font-family: var(--font-mono); font-size: 0.9em; }
 
 :not(pre) > code {
@@ -93,7 +87,6 @@ pre {
 }
 pre code.hljs, pre code { padding: 0; background: none; font-size: 0.88rem; }
 
-/* copy button added by highlightjs-copy */
 pre .hljs-copy-button {
     position: absolute;
     top: 0.5rem;
@@ -107,8 +100,6 @@ pre .hljs-copy-button {
     cursor: pointer;
 }
 pre .hljs-copy-button:hover { color: var(--color-text); }
-
-/* ---------- page frame ---------- */
 
 .container {
     width: 100%;
@@ -144,8 +135,6 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .footer-line a:hover { color: var(--color-text); }
 .webring-arrow { padding: 0 0.3rem; }
 
-/* ---------- post header / body ---------- */
-
 .post-description { margin-bottom: 1.6rem; }
 .post-description h1 { margin-bottom: 0.3rem; }
 .page-date { font-size: 0.92rem; color: var(--color-text-dim); }
@@ -160,14 +149,11 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .blog-tag::before { content: "#"; }
 .blog-tag:hover { color: var(--color-primary); }
 
-/* signature: the word in a handwriting font, plus a swoosh that loops around the "v" */
 .signoff { display: block; width: 200px; max-width: 80%; height: auto; margin: 2rem 0 0; overflow: visible; }
 .signoff text { font-family: "Over the Rainbow", cursive; font-size: 62px; fill: var(--color-primary); }
 .signoff path { fill: none; stroke: var(--color-primary); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 .blog-cover { width: 100%; max-height: 400px; object-fit: cover; border-radius: 6px; margin: 1rem 0; }
-
-/* ---------- blog / TIL / project lists: "title ........ date" ---------- */
 
 .collection-title { margin-bottom: 1.4rem; }
 
@@ -184,8 +170,6 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .blog-date { font-size: 0.88rem; color: var(--color-text-dim); white-space: nowrap; }
 .blog-desc { grid-column: 1 / -1; margin: 0.1rem 0 0; font-size: 0.92rem; color: var(--color-text-low); }
 
-/* ---------- tags ---------- */
-
 .all-tags { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; padding: 0.5rem 0; }
 .tagged-posts { display: grid; gap: 0.4rem; padding: 0.5rem 0; }
 .tagged-posts a { color: var(--color-text); }
@@ -200,8 +184,6 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .tg-node:hover text, .tg-node:focus text { fill: var(--color-text); }
 .tg-node.tg-dim { opacity: 0.2; }
 .tg-node { outline: none; }
-
-/* ---------- home ---------- */
 
 .home-intro h1 { font-size: 2rem; }
 .home-contact { margin-top: 1.6rem; font-size: 0.95rem; color: var(--color-text-dim); }
@@ -222,13 +204,9 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .listening-now .lastfm-art { width: 34px; height: 34px; flex: 0 0 34px; margin: 0; border-radius: 4px; object-fit: cover; }
 .lastfm-nowplaying { font-weight: 600; }
 
-/* ---------- about ---------- */
-
 .about-layout { position: relative; }
 .about-art { float: right; width: min(200px, 35%); margin: 0 0 1rem 1.5rem; opacity: 0.85; pointer-events: none; }
 .about-art img { display: block; width: 100%; margin: 0; }
-
-/* ---------- guestbook ---------- */
 
 .guestbook form { display: grid; gap: 0.75rem; margin-bottom: 2rem; }
 .guestbook input,
@@ -260,8 +238,6 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .entry strong { display: block; }
 .entry p { margin: 0.2rem 0 0; color: var(--color-text-dim); }
 .entry .entry-date { margin-top: 0.3rem; font-size: 0.82rem; color: var(--color-text-low); }
-
-/* ---------- gallery ---------- */
 
 .gallery-shell { max-width: 50rem; }
 
@@ -307,8 +283,6 @@ header nav a:hover { color: var(--color-text); text-decoration: none; }
 .lightbox-prev { left: 15px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 15px; top: 50%; transform: translateY(-50%); }
 .lightbox-close { top: 16px; right: 16px; font-size: 1.8rem; }
-
-/* ---------- small screens ---------- */
 
 @media (max-width: 600px) {
     body { font-size: 1rem; }

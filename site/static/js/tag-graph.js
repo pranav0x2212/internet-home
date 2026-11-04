@@ -1,6 +1,3 @@
-// Tag graph: one dot per tag (bigger = more posts), a line between tags that
-// appear together in a post. Click a dot to open that tag's page.
-// Reads /static/index.json, which anna generates on every build.
 (async function () {
     var host = document.getElementById('tag-graph');
     if (!host) return;
@@ -14,7 +11,6 @@
         return;
     }
 
-    // --- build nodes and links from the posts' tags
     var counts = {}, pairs = {};
     Object.keys(index).forEach(function (url) {
         var tags = (index[url].Frontmatter && index[url].Frontmatter.Tags) || [];
@@ -48,7 +44,6 @@
     });
     var radius = function (n) { return 4 + 2.2 * Math.sqrt(n.count); };
 
-    // --- tiny force simulation: repel all, pull linked nodes together, gravity to centre
     var alpha = 1;
     function tick() {
         var i, j, n, m, dx, dy, d2, d, f;
@@ -82,7 +77,6 @@
         alpha *= 0.985;
     }
 
-    // --- draw
     var svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svg.setAttribute('role', 'img');
@@ -110,7 +104,6 @@
         n.el.appendChild(title); n.el.appendChild(c); n.el.appendChild(t);
         svg.appendChild(n.el);
 
-        // highlight this tag and its neighbours on hover/focus
         function on() {
             var near = {}; near[n.id] = true;
             links.forEach(function (l) {
@@ -130,7 +123,6 @@
         n.el.addEventListener('blur', off);
     });
 
-    // stretch the layout so it always fills the box, whatever the tags are
     function fit() {
         var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
         nodes.forEach(function (n) {
@@ -157,11 +149,9 @@
         });
     }
 
-    // settle the layout up front, so the first paint is already tidy
     for (var s = 0; s < 300; s++) tick();
     paint();
 
-    // then a little motion if the visitor hasn't asked for less of it
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce) {
         alpha = 0.3;

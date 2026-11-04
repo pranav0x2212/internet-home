@@ -1,5 +1,4 @@
 {{ define "head" }}
-<!-- If the template for a particular url does not exist(posts.html), setting it to the specific page template data -->
 {{ $PageData := index .DeepDataMerge.Templates .PageURL }} {{if eq $PageData nil
 }} {{ $PageData = .TemplateData }} {{end}}
 
@@ -11,33 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{$PageData.Frontmatter.Title}}</title>
 
-    <!-- Main site stylesheet -->
     <link rel="stylesheet" href="/static/styles/main.css" />
     <link rel="stylesheet" href="/static/styles/admonitions.css" />
     <script defer src="/static/js/admonitions.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Signature font: subset to just the letters in "Pranav", so it is a tiny download -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Over+the+Rainbow&display=swap&text=Pranav" />
 
-    <!-- Favicons -->
     <link rel="icon" href="/static/images/heart-favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/static/images/heart-favicon.svg" />
     <meta name="theme-color" content="#171c28" />
 
-    <!-- Highlight.js theme (dark variant) -->
     <link id="hljs-dark" rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css" />
 
-    <!-- External Scripts (highlight.js + copy plugin) -->
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
     <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
 
     <link rel="alternate" type="application/atom+xml" title="feed" href="/feed.xml" />
 
-    <!-- Scripts filled in from plugins -->
     {{ if $PageData.LiveReload }}
     <script>
         const eventSource = new EventSource("http://localhost:8000/events");
@@ -51,8 +44,6 @@
     <script src="/static/scripts/{{.}}" defer></script>
     {{end}}
 
-    <!-- Link previews (Discord, WhatsApp, LinkedIn, ...). Posts get a generated card via
-         `previewimage:` in their front matter, see scripts/og.py; everything else gets the default. -->
     {{ $Base := .DeepDataMerge.LayoutConfig.BaseURL }}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pranav's Internet Home" />
