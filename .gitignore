@@ -1,7 +1,5 @@
-# anna binary (downloaded by deploy.sh) and build output
 /anna
 site/rendered/
 
-# editor / OS junk
 .DS_Store
 .idea/

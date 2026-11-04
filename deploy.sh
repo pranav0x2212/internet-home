@@ -3,7 +3,6 @@ set -euo pipefail
 REPO="anna-ssg/anna"
 ARCH="Linux_x86_64"
 
-# Pinned so a new upstream release can't break the deploy; bump deliberately.
 LATEST_TAG="v4.0.0"
 
 echo "Using anna $LATEST_TAG"
