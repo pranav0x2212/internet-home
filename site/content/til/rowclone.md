@@ -4,6 +4,7 @@ date: "2026-06-23"
 description: "A fascinating Processing-in-Memory technique that performs bulk data copy inside DRAM by exploiting row buffer behavior, eliminating unnecessary data movement through the CPU."
 collections:
   - til
+previewimage: "/og/til-rowclone.png"
 ---
 
 # RowClone - Copying Data Entirely Inside DRAM

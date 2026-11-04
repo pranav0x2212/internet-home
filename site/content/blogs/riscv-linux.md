@@ -8,6 +8,7 @@ tags:
   - linux
 collections:
   - blogs
+previewimage: "/og/blogs-riscv-linux.png"
 ---
 
 ## The Hidden Half of Computing
@@ -63,7 +64,7 @@ This isn’t just about tinkering. RISC-V is becoming a global standard. Tech gi
 
 My first introduction to RISC-V was at [Tilde](https://hsp-ec.xyz/announcements/tilde-4.0), HSP’s flagship summer mentorship program where we were tasked with building a RISC processor in [Verilog](https://en.wikipedia.org/wiki/Verilog). Although I wasn’t able to continue with the project, I was given access to vast resources that opened the door to the world of RISC. I started out with simple [Linux Foundation courses](https://training.linuxfoundation.org/training/introduction-to-riscv-lfd110/) and quickly found myself immersed in the subject, having already delved deep into Digital VLSI.
 
-Soon, I was diving into books and research papers to understand the architecture and design principles of RISC-V. At the same time, I was building [**RISCape**](https://github.com/pranav0x0112/RISCape), a 5-stage pipelined RISC-V processor. Reading the theory while implementing it side by side made the concepts click in a way no textbook alone could achieve.
+Soon, I was diving into books and research papers to understand the architecture and design principles of RISC-V. At the same time, I was building [**RISCape**](https://github.com/pranav0x2212/RISCape), a 5-stage pipelined RISC-V processor. Reading the theory while implementing it side by side made the concepts click in a way no textbook alone could achieve.
 
 This hands-on approach showed me the real power of open architectures: students can explore, experiment, and actually **make things work**, all without asking for permission. If it got me hooked, it can probably do the same for you: grab a core, start experimenting, and see where it takes you.
 

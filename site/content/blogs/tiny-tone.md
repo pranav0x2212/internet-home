@@ -11,6 +11,7 @@ collections:
   - blogs
 customFields:
   - image: "/images/tiny-tone.png"
+previewimage: "/og/blogs-tiny-tone.png"
 ---
 
 ## Introduction
@@ -25,7 +26,7 @@ Tiny-QV is a collaborative competition under the [**Tiny Tapeout**](https://tiny
 
 At its heart is **TinyQV**, a lightweight RISC-V CPU that implements the RV32EC instruction set along with the Zcb and Zicond extensions.
 
-The really fun part: the **peripherals** that complete the SoC are contributed by the [open source](https://en.wikipedia.org/wiki/Open_source) community. Each submission is a chance to have your logic integrated into silicon and that’s where my project, [**Tiny-Tone**](https://github.com/pranav0x0112/tiny-tone), fits in.
+The really fun part: the **peripherals** that complete the SoC are contributed by the [open source](https://en.wikipedia.org/wiki/Open_source) community. Each submission is a chance to have your logic integrated into silicon and that’s where my project, [**Tiny-Tone**](https://github.com/pranav0x2212/tiny-tone), fits in.
 
 ![Risc-V competition logo](https://github.com/TinyTapeout/ttsky25a-tinyQV/raw/main/docs/riscv_compo.jpg)
 

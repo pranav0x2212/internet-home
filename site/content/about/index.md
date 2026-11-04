@@ -1,5 +1,6 @@
 ---
 title: "About Me"
+description: "Electronics student, guitar player, sketcher and snake enthusiast."
 layout: "about"
 ---
 

@@ -4,6 +4,7 @@ date: "2026-06-25"
 description: "A Processing-in-Memory technique that exploits charge sharing in DRAM to perform bulk bitwise operations entirely inside memory."
 collections:
   - til
+previewimage: "/og/til-ambit.png"
 ---
 
 # Ambit - When DRAM Accidentally Becomes a Logic Gate

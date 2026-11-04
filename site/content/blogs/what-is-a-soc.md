@@ -8,6 +8,7 @@ author: "Pranav M"
 customFields:
   - image: "/images/soc.png"
 
+previewimage: "/og/blogs-what-is-a-soc.png"
 ---
 
 ## Introduction

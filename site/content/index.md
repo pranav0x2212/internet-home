@@ -1,5 +1,6 @@
 ---
 title: "Pranav"
+description: "Undergraduate electronics student writing about computer architecture, memory systems and digital hardware design."
 ---
 
 <section class="home-intro">
@@ -39,4 +40,13 @@ title: "Pranav"
     <a href="https://www.instagram.com/prawns_1205/" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
 </div>
+
+<p class="home-credit">
+  This site draws its inspiration heavily from
+  <a href="https://adihegde.com/" target="_blank" rel="noopener">adihegde.com</a>,
+  <a href="https://polarhive.net/" target="_blank" rel="noopener">polarhive.net</a>,
+  <a href="https://anirudhsudhir.com/" target="_blank" rel="noopener">anirudhsudhir.com</a>,
+  <a href="https://rowjee.com/" target="_blank" rel="noopener">rowjee.com</a> and
+  <a href="https://essenceia.github.io/" target="_blank" rel="noopener">essenceia.github.io</a>.
+</p>
 </section>

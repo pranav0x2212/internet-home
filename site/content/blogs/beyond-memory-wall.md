@@ -10,18 +10,16 @@ tags:
   - low-level
   - cpu
 description: "Why the same memory can feel like 5ns or 150ns depending on how you access it."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav
-author_link: "https://github.com/pranav0x0112"
 collections:
   - blogs
+previewimage: "/og/blogs-beyond-memory-wall.png"
 ---
 
 ## The False Confidence 
 
 [Blog 1](https://prawns.dev/blogs/memory-wall) ended with what felt like a satisfying explanation. DRAM is slow, the cache hierarchy exists to hide that fact, and if your working set grows large enough to spill out of cache, you start paying the full cost of main memory access. I even had the experiments to back it up: the 64-byte cache line showed up right where the hardware said it would, and the latency curves bent exactly the way the mental model predicted. It felt like I'd caught the memory subsystem with its pants down. 
 
-So naturally, I assumed the next set of experiments would just be more of the same. Bigger working sets, slower access times, the memory wall doing its thing on a larger stage. I set up a working set sweep in [Aletheia](https://github.com/pranav0x0112/Aletheia) ranging from 1KB all the way upto 64MB, expecting to watch latency climb steadily as the data outgrew each level of cache. What I did not expect was to find myself 20 minutes later questioning whether my benchmark was broken. 
+So naturally, I assumed the next set of experiments would just be more of the same. Bigger working sets, slower access times, the memory wall doing its thing on a larger stage. I set up a working set sweep in [Aletheia](https://github.com/pranav0x2212/Aletheia) ranging from 1KB all the way upto 64MB, expecting to watch latency climb steadily as the data outgrew each level of cache. What I did not expect was to find myself 20 minutes later questioning whether my benchmark was broken. 
 
 The sequential scan results looked wrong in the most confusing possible way, not wrong like garbage values or obvious bugs, but wrong like "this should be slower and it isn't and I don't know why." A 64MB sequential scan, well into DRAM territory, was not behaving like something that had to pay 100 nanoseconds per cache miss. Same machine, same DRAM, same cache hierarchy I'd spent an entire post describing as the fundamental bottleneck of modern computing.
 

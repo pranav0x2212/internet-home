@@ -9,9 +9,7 @@ tags:
 collections:
   - blogs
 description: "A hands-on guide to free, open-source tools that let students design, simulate, and build real processors, no million-dollar lab required."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav 
-author_link: "https://github.com/pranav0x0112"
+previewimage: "/og/blogs-riscv-toolchain.png"
 ---
 
 ## So you're sold on RISC-V. You've seen the vision. Now comes the question every beginner asks: *"Okay, but how do I actually start?"*
@@ -94,7 +92,7 @@ Now that you have the tools, what do you build? Here's where pre-existing RISC-V
 
 ![boom.png](https://i.postimg.cc/3rcfxXbf/boom.png)
 
-**[RISCape](https://github.com/pranav0x0112/RISCape)** (shameless plug) is my 5-stage pipelined RISC-V core. Built by a student, for students. If I can do it, you absolutely can too. Fork it, break it, fix it, extend it. That's how you learn.
+**[RISCape](https://github.com/pranav0x2212/RISCape)** (shameless plug) is my 5-stage pipelined RISC-V core. Built by a student, for students. If I can do it, you absolutely can too. Fork it, break it, fix it, extend it. That's how you learn.
 
 ![riscape.png](https://i.postimg.cc/2jsJxdFB/riscape.png)
 
@@ -110,7 +108,7 @@ Tiny Tapeout is a platform that makes chip fabrication accessible. Instead of pa
 
 I first heard about Tiny Tapeout while working on a [System-on-Chip (SoC) project](https://www.prawns.dev/blogs/what-is-a-soc/) with some friends. The idea that students could tape out real chips felt almost too good to be true. My first real dive was through a [crowd-sourced competition](https://tinytapeout.com/competitions/risc-v-peripheral/) where participants contributed peripherals for a RISC-V SoC. That got me hooked, read about my submission [here](https://www.prawns.dev/blogs/tiny-tone/)!
 
-After that, I decided to go all in and do a dedicated tapeout of my own: [Herald](https://github.com/pranav0x0112/Herald), a co-processor that handles CORDIC (coordinate rotation) and MAC (multiply-accumulate) operations. The workflow? Design in Verilog, simulate it, synthesize with Yosys, place & route with OpenROAD, verify timing, submit your GDSII file, and wait for the shuttle to tape out.
+After that, I decided to go all in and do a dedicated tapeout of my own: [Herald](https://github.com/pranav0x2212/Herald), a co-processor that handles CORDIC (coordinate rotation) and MAC (multiply-accumulate) operations. The workflow? Design in Verilog, simulate it, synthesize with Yosys, place & route with OpenROAD, verify timing, submit your GDSII file, and wait for the shuttle to tape out.
 
 Sounds smooth, right? It wasn't. Errors after errors timing violations, things that worked in simulation but failed in hardware checks. But here's the thing: the Tiny Tapeout community is incredibly active. Ask a question on Discord (even if you think it's silly), and someone will help. The barriers aren't technical anymore, they're just learning curves, and the community helps you climb them.
 
@@ -130,7 +128,7 @@ A decade ago, you needed a million-dollar lab to design a processor. Today, you 
 
 The tools are here. The cores are open. The community is waiting.
 
-You've seen the philosophy [here](https://homebrew.hsp-ec.xyz/posts/risc-v:-the-linux-of-hardware/). You've seen the tools in this post. In the next post, we'll go deep into pipelines, out-of-order execution, hazards, caches, and the real magic happening inside modern processors. We'll talk about how I approached building [RISCape](https://github.com/pranav0x0112/RISCape), the challenges I faced, and what I learned about computer architecture along the way.
+You've seen the philosophy [here](https://homebrew.hsp-ec.xyz/posts/risc-v:-the-linux-of-hardware/). You've seen the tools in this post. In the next post, we'll go deep into pipelines, out-of-order execution, hazards, caches, and the real magic happening inside modern processors. We'll talk about how I approached building [RISCape](https://github.com/pranav0x2212/RISCape), the challenges I faced, and what I learned about computer architecture along the way.
 
 But for now? Start small. Run the tools. Let things break.
 The rest follows.

@@ -9,11 +9,9 @@ tags:
   - architecture
   - low-level
 description: "An exploration of why fast CPUs still run slow programs, uncovering the memory wall through experiments, cache behavior, and data movement."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav
-author_link: "https://github.com/pranav0x0112"
 collections:
   - blogs
+previewimage: "/og/blogs-memory-wall.png"
 ---
 
 My laptop's CPU can do billions of operations per second. I know this because 
@@ -28,7 +26,7 @@ that memory couldn't deliver fast enough. This gap between how fast your CPU
 can work and how fast memory can feed it has a name: the Memory Wall. And once 
 you see it, you can't unsee it.
 
-So I built a small framework called [Aletheia](https://github.com/pranav0x0112/Aletheia) 
+So I built a small framework called [Aletheia](https://github.com/pranav0x2212/Aletheia) 
 to understand this properly. I ran some experiments, expected boring gradual 
 results, and instead got a performance cliff so sharp it looked like a bug. 
 It was not a bug. It was the hardware telling me exactly how it works - I just 

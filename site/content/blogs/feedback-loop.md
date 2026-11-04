@@ -9,11 +9,9 @@ tags:
   - friendships
   - personal
 description: "A reflection on college, curiosity, friendship, and the many small moments that quietly changed my life."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav
-author_link: "https://github.com/pranav0x0112"
 collections:
   - blogs
+previewimage: "/og/blogs-feedback-loop.png"
 ---
 
 ## A 17 Year Old Kid

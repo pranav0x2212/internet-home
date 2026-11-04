@@ -4,6 +4,7 @@ date: "2026-07-01"
 description: "The first commercially available Processing-in-Memory architecture."
 collections:
   - til
+previewimage: "/og/til-upmem.png"
 ---
 
 # UPMEM - Bringing Processing-in-Memory Out of the Lab

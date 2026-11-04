@@ -9,11 +9,9 @@ tags:
   - tiny-tapeout
   - open-source-silicon
 description: "A programmable processing-near-memory engine for binary similarity search, built around a tiny instruction set and an idle memory port."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav
-author_link: "https://github.com/pranav0x2212"
 collections:
   - blogs
+previewimage: "/og/blogs-hades.png"
 ---
 
 ## A Constrained Place to Build a PNM Engine

@@ -4,6 +4,7 @@ date: "2026-06-30"
 description: "A Processing-Near-Memory architecture that introduces PIM-Enabled Instructions."
 collections:
   - til
+previewimage: "/og/til-pei.png"
 ---
 
 # PEI - Making Near Memory Computing Feel Like a Normal CPU Instruction

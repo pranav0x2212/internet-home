@@ -4,6 +4,7 @@ date: "2026-05-30"
 description: "A small reflection on engineering, first principles, and why deep understanding sometimes feels slower than memorization."
 collections:
   - til
+previewimage: "/og/til-how-engineers-think.png"
 ---
 
 # Understanding Isn't the Same as Execution

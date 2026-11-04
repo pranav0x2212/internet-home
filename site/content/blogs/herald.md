@@ -11,11 +11,9 @@ tags:
 collections:
   - blogs
 description: "A deep dive into building Herald, a fixed-point DSP coprocessor for Tiny Tapeout, from architecture and CORDIC design to GDS layout and silicon."
-permalink: posts/{{ title | slug }}/index.html
-author_name: M Pranav
-author_link: "https://github.com/pranav0x0112"
 customFields:
   - image: "/images/tiny-tone.png"
+previewimage: "/og/blogs-herald.png"
 ---
 
 ## Why I Built Herald
@@ -24,7 +22,7 @@ Microcontrollers are great, until you ask them to do math.
 
 Try throwing trigonometry or signal processing at a small MCU and things slow down very quickly. This is especially true for cheaper or simpler chips that either do not have a floating point unit or rely on relatively expensive hardware support. Even when FPUs are available, they are not always the best choice for power or area constrained systems. 
 
-I wanted something simpler. Maybe a small hardware block that could handle these operations efficiently without dragging in all the overhead of floating point. And that idea eventually became [Herald](https://github.com/pranav0x0112/Herald), a fixed-point DSP coprocessor designed for [Tiny Tapeout](https://tinytapeout.com/). 
+I wanted something simpler. Maybe a small hardware block that could handle these operations efficiently without dragging in all the overhead of floating point. And that idea eventually became [Herald](https://github.com/pranav0x2212/Herald), a fixed-point DSP coprocessor designed for [Tiny Tapeout](https://tinytapeout.com/). 
 
 The design itself was written in [Bluespec SystemVerilog](https://github.com/rsnikhil/Bluespec_BSV_Tutorial) for rapid prototyping, and then compiled down to Verilog to fit into the Tiny Tapeout flow.
 

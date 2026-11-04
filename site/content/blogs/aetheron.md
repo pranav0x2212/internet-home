@@ -10,11 +10,12 @@ collections:
   - blogs
 customFields:
   - image: "/images/aetheron.png"
+previewimage: "/og/blogs-aetheron.png"
 ---
 
 ## Introduction
 
-[Aetheron](https://github.com/pranav0x0112/Aetheron) is a small but complete RISC-V [System-on-Chip](https://en.wikipedia.org/wiki/System_on_a_chip), built entirely in [Bluespec SystemVerilog](https://github.com/rsnikhil/Bluespec_BSV_Tutorial) and run in simulation. It features a pipelined CPU, memory-mapped peripherals, my own minimal TileLink interconnect, and can boot minimal bare metal C programs — all stitched together from scratch.
+[Aetheron](https://github.com/pranav0x2212/Aetheron) is a small but complete RISC-V [System-on-Chip](https://en.wikipedia.org/wiki/System_on_a_chip), built entirely in [Bluespec SystemVerilog](https://github.com/rsnikhil/Bluespec_BSV_Tutorial) and run in simulation. It features a pipelined CPU, memory-mapped peripherals, my own minimal TileLink interconnect, and can boot minimal bare metal C programs — all stitched together from scratch.
 
 But it’s more than just a collection of modules.
 
@@ -69,11 +70,11 @@ Finally, I decided early on that **simulation-only was totally fine**. I wasn’
 
 I began with the bare minimum: a **CPU**, **ROM**, **RAM**, and **UART** — all stitched together through a custom **TileLink interconnect**. At this point, the SoC didn’t boot any real programs. It wasn’t even executing C yet. But my focus was on getting the **pipeline running** in order to see actual instructions being fetched, decoded, and executed.
 
-The **CPU design started as a stub** — a placeholder module that just returned hardcoded values. It helped me bring up the rest of the system without worrying about instruction execution yet. Once the rest of the SoC took shape, I **replaced the stub with a proper 5-stage pipelined core** called [**Specula**](https://github.com/pranav0x0112/Specula). At the time, Specula was a relatively simple in-order RISC-V core. It would eventually evolve into something far more ambitious: a true **Out-of-Order** processor. But for now, it was my way of getting real programs flowing through an instruction pipeline.
+The **CPU design started as a stub** — a placeholder module that just returned hardcoded values. It helped me bring up the rest of the system without worrying about instruction execution yet. Once the rest of the SoC took shape, I **replaced the stub with a proper 5-stage pipelined core** called [**Specula**](https://github.com/pranav0x2212/Specula). At the time, Specula was a relatively simple in-order RISC-V core. It would eventually evolve into something far more ambitious: a true **Out-of-Order** processor. But for now, it was my way of getting real programs flowing through an instruction pipeline.
 
 The **ROM** was modeled as a read-only memory block, used to hold the bootloader and payload at simulation time. The **RAM** was a simple byte-addressable memory model, accessible via TileLink. And the **UART**, while basic, was my only way to get output from inside the SoC — my single window into what the CPU was doing.
 
-![full_rom_to_ram_boot.png](https://github.com/pranav0x0112/Aetheron/blob/main/misc/full_rom_to_ram_boot.png?raw=true)
+![full_rom_to_ram_boot.png](https://github.com/pranav0x2212/Aetheron/blob/main/misc/full_rom_to_ram_boot.png?raw=true)
 
 > The full ROM → RAM boot process in Aetheron
 
@@ -83,7 +84,7 @@ At this stage, I was manually writing tiny **RISC-V assembly test programs**, co
 
 This was also when I first got UART output working in my assembly code.
 
-![uart_success.png](https://github.com/pranav0x0112/Aetheron/blob/main/misc/uart_success.png?raw=true)
+![uart_success.png](https://github.com/pranav0x2212/Aetheron/blob/main/misc/uart_success.png?raw=true)
 
 > And just like that the CPU could _talk_ :D
 
@@ -109,7 +110,7 @@ I turned to trace logs. I dumped every memory access, register write, UART state
 
 Maybe the hardware was at fault? I added debug prints in the TileLink interconnect and peripherals. I confirmed: writes to `0x40001000` _were_ routed correctly to the UART. Address decoding wasn’t the issue.
 
-![Aetheron-Memory-Map](https://github.com/pranav0x0112/Aetheron/raw/main/misc/memory-map.png)
+![Aetheron-Memory-Map](https://github.com/pranav0x2212/Aetheron/raw/main/misc/memory-map.png)
 
 ### 3. Toolchain & Linker Script Confusion
 
@@ -160,7 +161,7 @@ Looking back, building Aetheron taught me far more than just how to wire up peri
 
 Most importantly, I learned to enjoy the grind — to sit with a problem, question every assumption, and slowly trace my way to a solution.
 
-> Interested to read about my SoC Learnings? [Click here](https://github.com/pranav0x0112/prawns-stack/tree/main/SoC_learnings) :D, I try to keep it up-to-date.
+> Interested to read about my SoC Learnings? [Click here](https://github.com/pranav0x2212/prawns-stack/tree/main/SoC_learnings) :D, I try to keep it up-to-date.
 
 ---
 

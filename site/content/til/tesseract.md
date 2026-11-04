@@ -4,6 +4,7 @@ date: "2026-06-29"
 description: "A Processing-near-Memory architecture for memory bound graph processing."
 collections:
   - til
+previewimage: "/og/til-tesseract.png"
 ---
 
 # Tesseract - When the Processor Moves Next Door to Memory

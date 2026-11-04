@@ -4,6 +4,7 @@ date: "2026-06-26"
 description: "A Processing-in-Memory framework that transforms Ambit's logic primitives into programmable computation."
 collections:
   - til
+previewimage: "/og/til-simdram.png"
 ---
 
 # SIMDRAM - Turning DRAM Into a Programmable SIMD Engine

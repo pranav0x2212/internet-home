@@ -4,6 +4,7 @@ date: "2026-06-27"
 description: "A Processing-in-Memory technique that exploits SRAM bitlines and sense amps to perform computation directly inside caches."
 collections:
   - til
+previewimage: "/og/til-processing-using-sram.png"
 ---
 
 # Processing-Using-SRAM - When the Cache Becomes the Processor
