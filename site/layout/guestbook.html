@@ -8,8 +8,8 @@
             <h1>Guestbook</h1>
 
             <form id="guestbook-form">
-                <input type="text" id="name" placeholder="Your name" required />
-                <textarea id="message" placeholder="Your message" required></textarea>
+                <input type="text" id="name" placeholder="Your name" maxlength="50" required />
+                <textarea id="message" placeholder="Your message" maxlength="500" required></textarea>
                 <button type="submit">Sign</button>
             </form>
 
@@ -20,7 +20,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, query, orderBy, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getFirestore, collection, query, orderBy, limit, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyD9PY_J-YImDGCy9NuOx2VcucqePo67Qjo",
@@ -36,7 +36,7 @@
         const db = getFirestore(app);
 
         async function loadEntries() {
-          const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"));
+          const q = query(collection(db, "guestbook"), orderBy("timestamp", "desc"), limit(100));
           const snapshot = await getDocs(q);
 
           const container = document.getElementById("entries");
@@ -97,17 +97,27 @@
         document.getElementById("guestbook-form").addEventListener("submit", async (e) => {
           e.preventDefault();
 
-          const name = document.getElementById("name").value;
-          const message = document.getElementById("message").value;
+          const form = e.target;
+          const button = form.querySelector("button");
+          const name = document.getElementById("name").value.trim();
+          const message = document.getElementById("message").value.trim();
+          if (!name || !message) return;
 
-          await addDoc(collection(db, "guestbook"), {
-            name,
-            message,
-            timestamp: serverTimestamp()
-          });
-
-          await loadEntries();
-          e.target.reset();
+          button.disabled = true;
+          try {
+            await addDoc(collection(db, "guestbook"), {
+              name,
+              message,
+              timestamp: serverTimestamp()
+            });
+            form.reset();
+            await loadEntries();
+          } catch (err) {
+            console.error(err);
+            alert("Couldn't sign the guestbook, please try again in a bit.");
+          } finally {
+            button.disabled = false;
+          }
         });
 
         loadEntries();

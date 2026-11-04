@@ -4,9 +4,17 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /guestbook/{doc} {
       allow read: if true;
-      allow write: if
-        request.resource.data.name.size() < 50 &&
-        request.resource.data.message.size() < 500;
+
+      allow create: if request.resource.data.keys().hasOnly(['name', 'message', 'timestamp'])
+        && request.resource.data.name is string
+        && request.resource.data.message is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 50
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 500
+        && request.resource.data.timestamp == request.time;
+
+      allow update, delete: if false;
     }
   }
 }
