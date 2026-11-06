@@ -1,6 +1,6 @@
 ---
 title: "Out of Order RISC-V core from scratch - Specula"
-date: "2026-11-04"
+date: "2026-11-06"
 tags:
   - systems
   - performance
