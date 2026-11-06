@@ -55,6 +55,21 @@ hr { border: none; border-top: 1px solid var(--color-border); margin: 2.2rem 0; 
 img, video, iframe { max-width: 100%; height: auto; }
 .body img { display: block; margin: 1.5rem auto; border-radius: 6px; }
 
+.body img[src*="/images/specula-"],
+.body img[src$="/images/in-order-vs-ooo.svg"] {
+    width: min(48rem, calc(100vw - 2.5rem));
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.body p:has(> img) + blockquote {
+    border-left: none;
+    text-align: center;
+    font-style: italic;
+}
+
 blockquote {
     margin: 1.2rem 0;
     padding: 0.2rem 1rem;
