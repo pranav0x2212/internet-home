@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 424" width="100%" style="max-width:1040px;height:auto" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Specula divider: combinational versus iterative radix-2 restoring</title>
+<desc id="desc">Before: 32-bit operands A and B enter one large combinational divider that produces quotient Q and remainder R through a single long logic path with no intermediate registers. After: the same operands load a shared iterative divider holding a divisor register, a remainder register and a quotient register. One subtractor is reused every iteration, feeding the new remainder and a quotient bit back into the registers. A control FSM (IDLE, RUN, DONE) and a 32-iteration counter sequence the work, and Q or R is produced at completion for DIVU or REMU. The ALU is blocked while the divider is busy, and only one division runs at a time.</desc>
+<defs>
+<marker id="m-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#a9b5cb"/></marker>
+<marker id="m-comb" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#f2b45f"/></marker>
+<marker id="m-fb" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#5ccfa5"/></marker>
+<marker id="m-ctl" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#7d889c"/></marker>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.t{font-size:14px;font-weight:600;fill:#e6eef8} .s{font-size:11px;fill:#9aa9c2}
+.c{font-size:11.5px;font-weight:600;fill:#e6eef8} .cs{font-size:9.5px;fill:#9aa9c2}
+.k{font-size:10.5px;font-weight:600;letter-spacing:.08em;fill:#7d889c}
+.l{font-size:10px;paint-order:stroke;stroke:#171c28;stroke-width:4px;stroke-linejoin:round}
+.f{fill:none;stroke-width:1.4}
+</style></defs>
+<rect width="1040" height="424" rx="12" fill="#171c28"/>
+
+<!-- ============ BEFORE ============ -->
+<text class="k" x="24" y="34">BEFORE</text>
+<text class="t" x="24" y="54">Combinational divider</text>
+
+<rect x="36" y="150" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="60" y="171" text-anchor="middle">A</text>
+<rect x="36" y="200" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="60" y="221" text-anchor="middle">B</text>
+<text class="cs" x="60" y="142" text-anchor="middle">32-bit</text>
+<path class="f" d="M84 167 H130" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<path class="f" d="M84 217 H130" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+
+<rect x="130" y="100" width="170" height="230" rx="8" fill="#1e2638" stroke="#f2b45f" stroke-width="1.6"/>
+<text class="t" x="215" y="124" text-anchor="middle">Division logic</text>
+<text class="s" x="215" y="140" text-anchor="middle">32 stages unrolled</text>
+<rect x="152" y="152" width="134" height="22" rx="5" fill="#262f47" stroke="#5a4a2c"/>
+<text class="cs" x="219" y="167" text-anchor="middle">subtract · select</text>
+<rect x="152" y="182" width="134" height="22" rx="5" fill="#262f47" stroke="#5a4a2c"/>
+<text class="cs" x="219" y="197" text-anchor="middle">subtract · select</text>
+<rect x="152" y="212" width="134" height="22" rx="5" fill="#262f47" stroke="#5a4a2c"/>
+<text class="cs" x="219" y="227" text-anchor="middle">subtract · select</text>
+<text class="s" x="219" y="256" text-anchor="middle">⋮</text>
+<rect x="152" y="268" width="134" height="22" rx="5" fill="#262f47" stroke="#5a4a2c"/>
+<text class="cs" x="219" y="283" text-anchor="middle">subtract · select</text>
+<text class="cs" x="219" y="308" text-anchor="middle">no registers between stages</text>
+<path class="f" d="M141 150 V316" stroke="#f2b45f" marker-end="url(#m-comb)"/>
+
+<path class="f" d="M300 167 H342" stroke="#f2b45f" marker-end="url(#m-comb)"/>
+<path class="f" d="M300 217 H342" stroke="#f2b45f" marker-end="url(#m-comb)"/>
+<rect x="342" y="150" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="366" y="171" text-anchor="middle">Q</text>
+<rect x="342" y="200" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="366" y="221" text-anchor="middle">R</text>
+
+<text class="c" x="215" y="358" text-anchor="middle" style="fill:#f2b45f">One deep combinational path</text>
+<text class="cs" x="215" y="375" text-anchor="middle">operands to Q / R in a single cycle</text>
+<text class="cs" x="215" y="390" text-anchor="middle">large area, long critical path</text>
+
+<!-- separator -->
+<line x1="424" y1="30" x2="424" y2="400" stroke="#262f47" stroke-width="1.2"/>
+<path d="M418 205 L430 215 L418 225" fill="none" stroke="#7d889c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- ============ AFTER ============ -->
+<text class="k" x="440" y="34">AFTER</text>
+<text class="t" x="440" y="54">Iterative radix-2 restoring divider · shared DIVU / REMU</text>
+
+<rect x="436" y="150" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="460" y="171" text-anchor="middle">A</text>
+<rect x="436" y="200" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="460" y="221" text-anchor="middle">B</text>
+<text class="cs" x="460" y="142" text-anchor="middle">32-bit</text>
+<path class="f" d="M484 167 H520" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<path class="f" d="M484 217 H520" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+
+<rect x="520" y="84" width="410" height="320" rx="10" fill="#192031" stroke="#5ccfa5" stroke-width="1.4" stroke-dasharray="5 4"/>
+
+<!-- register row -->
+<rect x="540" y="124" width="110" height="46" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="c" x="595" y="144" text-anchor="middle">Divisor reg</text>
+<text class="cs" x="595" y="159" text-anchor="middle">D · held constant</text>
+<rect x="670" y="124" width="110" height="46" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="c" x="725" y="144" text-anchor="middle">Remainder reg</text>
+<text class="cs" x="725" y="159" text-anchor="middle">R · starts at 0</text>
+<rect x="800" y="124" width="110" height="46" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="c" x="855" y="144" text-anchor="middle">Quotient reg</text>
+<text class="cs" x="855" y="159" text-anchor="middle">Q · starts as dividend</text>
+
+<!-- subtractor -->
+<rect x="640" y="206" width="170" height="64" rx="8" fill="#1e2638" stroke="#5ccfa5" stroke-width="1.6"/>
+<text class="t" x="725" y="232" text-anchor="middle">Subtractor</text>
+<text class="s" x="725" y="250" text-anchor="middle">(R ≪ 1 | Q[31]) − D</text>
+<text class="cs" x="725" y="263" text-anchor="middle">fits ? keep difference : restore</text>
+
+<!-- data into subtractor -->
+<path class="f" d="M595 170 V240 H640" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<path class="f" d="M725 170 V206" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<path class="f" d="M855 170 V190 H790 V206" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<text class="l" x="822" y="186" text-anchor="middle" fill="#9aa9c2">Q[31]</text>
+
+<!-- feedback loop (iterative) -->
+<path class="f" d="M690 270 V292 H532 V104 H725 V124" stroke="#5ccfa5" stroke-width="1.8" marker-end="url(#m-fb)"/>
+<text class="l" x="610" y="288" text-anchor="middle" fill="#5ccfa5">new R</text>
+<path class="f" d="M770 270 V300 H920 V104 H855 V124" stroke="#5ccfa5" stroke-width="1.8" marker-end="url(#m-fb)"/>
+<text class="l" x="860" y="296" text-anchor="middle" fill="#5ccfa5">shift in quotient bit</text>
+<text class="l" x="640" y="100" text-anchor="middle" fill="#5ccfa5">same hardware, reused every iteration</text>
+
+<!-- control -->
+<rect x="540" y="330" width="224" height="60" rx="8" fill="#1e2638" stroke="#b59bff" stroke-width="1.6"/>
+<text class="c" x="652" y="347" text-anchor="middle">Control FSM</text>
+<rect x="554" y="358" width="50" height="20" rx="10" fill="#262f47" stroke="#7d889c"/>
+<text class="cs" x="579" y="372" text-anchor="middle">IDLE</text>
+<rect x="630" y="358" width="50" height="20" rx="10" fill="#262f47" stroke="#5ccfa5"/>
+<text class="cs" x="655" y="372" text-anchor="middle">RUN</text>
+<rect x="706" y="358" width="50" height="20" rx="10" fill="#262f47" stroke="#7d889c"/>
+<text class="cs" x="731" y="372" text-anchor="middle">DONE</text>
+<path class="f" d="M604 368 H630" stroke="#7d889c" stroke-width="1.1" marker-end="url(#m-ctl)"/>
+<path class="f" d="M680 368 H706" stroke="#7d889c" stroke-width="1.1" marker-end="url(#m-ctl)"/>
+
+<rect x="784" y="330" width="126" height="60" rx="8" fill="#1e2638" stroke="#b59bff" stroke-width="1.6"/>
+<text class="c" x="847" y="352" text-anchor="middle">Iteration counter</text>
+<text class="cs" x="847" y="372" text-anchor="middle">32 → 0 · one per cycle</text>
+<path class="f" d="M764 360 H784" stroke="#7d889c" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#m-ctl)"/>
+<path class="f" d="M740 330 V270" stroke="#7d889c" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#m-ctl)"/>
+<text class="l" x="745" y="318" fill="#9aa9c2">step</text>
+
+<!-- outputs -->
+<text class="cs" x="984" y="142" text-anchor="middle">on DONE</text>
+<path class="f" d="M930 167 H952" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<path class="f" d="M930 217 H952" stroke="#a9b5cb" marker-end="url(#m-flow)"/>
+<rect x="952" y="150" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="976" y="171" text-anchor="middle">Q</text>
+<rect x="952" y="200" width="48" height="34" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="976" y="221" text-anchor="middle">R</text>
+<text class="cs" x="976" y="250" text-anchor="middle">DIVU takes Q</text>
+<text class="cs" x="976" y="263" text-anchor="middle">REMU takes R</text>
+
+</svg>

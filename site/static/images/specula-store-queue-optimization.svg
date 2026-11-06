@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="100%" style="max-width:1200px;height:auto" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Store Queue forwarding and store-ordering optimization</title>
+<desc id="desc">Panel A: a 32-bit load needs four byte lanes. Two older stores in the 8-entry Store Queue overlap; for each byte lane the youngest matching older store supplies the byte, and the four bytes are merged into the forwarded word. An inset contrasts the old serial bestAge and merged chain with the new balanced fwdPick comparison tree. Panel B: store ordering moves from ROB-tag age arithmetic plus an 8-way lookup of the executing store to Store Queue position relative to sqHead, using the load saved sqWm watermark; stores in slots from sqHead up to sqWm are older than the load. Stores write memory only at commit.</desc>
+<defs>
+<marker id="m-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#a9b5cb"/></marker>
+<marker id="m-cmp" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#f2b45f"/></marker>
+<marker id="m-out" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#5ccfa5"/></marker>
+<marker id="m-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#7aa2ff"/></marker>
+<marker id="m-cyan" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#6fd3e8"/></marker>
+<marker id="m-pur" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#b59bff"/></marker>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.t{font-size:14px;font-weight:600;fill:#e6eef8} .s{font-size:11px;fill:#9aa9c2}
+.c{font-size:11.5px;font-weight:600;fill:#e6eef8} .cs{font-size:9.5px;fill:#9aa9c2}
+.k{font-size:10.5px;font-weight:600;letter-spacing:.08em;fill:#7d889c}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:600;fill:#e6eef8}
+.l{font-size:10px;paint-order:stroke;stroke:#171c28;stroke-width:4px;stroke-linejoin:round}
+.f{fill:none;stroke-width:1.4}
+</style></defs>
+<rect width="1200" height="540" rx="12" fill="#171c28"/>
+<rect x="24" y="20" width="568" height="500" rx="10" fill="#192031" stroke="#262f47" stroke-width="1.2"/>
+<rect x="608" y="20" width="568" height="500" rx="10" fill="#192031" stroke="#262f47" stroke-width="1.2"/>
+<text class="k" x="44" y="48" text-anchor="start" >PANEL A</text>
+<text class="t" x="44" y="68" text-anchor="start" >Byte-level store forwarding</text>
+<text class="s" x="44" y="86" text-anchor="start" >Each byte lane is served by the youngest older store that matches it</text>
+<rect x="44" y="100" width="250" height="30" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="c" x="169" y="120" text-anchor="middle" style="font-size:10.5px">Load  LW  · needs byte lanes b3 b2 b1 b0</text>
+<text class="cs" x="310" y="119" text-anchor="start" >match against older stores only</text>
+<text class="cs" x="219" y="156" text-anchor="middle" >byte 3</text>
+<text class="cs" x="285" y="156" text-anchor="middle" >byte 2</text>
+<text class="cs" x="351" y="156" text-anchor="middle" >byte 1</text>
+<text class="cs" x="417" y="156" text-anchor="middle" >byte 0</text>
+<rect x="44" y="164" width="136" height="38" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="c" x="112" y="181" text-anchor="middle" >SQ slot 2 · SW</text>
+<text class="cs" x="112" y="195" text-anchor="middle" >older store</text>
+<rect x="190" y="166" width="58" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="m" x="219" y="188" text-anchor="middle" >11</text>
+<rect x="256" y="166" width="58" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="m" x="285" y="188" text-anchor="middle" >22</text>
+<rect x="322" y="166" width="58" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="m" x="351" y="188" text-anchor="middle" >33</text>
+<rect x="388" y="166" width="58" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="m" x="417" y="188" text-anchor="middle" >44</text>
+<rect x="44" y="214" width="136" height="38" rx="8" fill="#1e2638" stroke="#6fd3e8" stroke-width="1.6"/>
+<text class="c" x="112" y="231" text-anchor="middle" >SQ slot 5 · SH</text>
+<text class="cs" x="112" y="245" text-anchor="middle" >younger of the two</text>
+<rect x="190" y="216" width="58" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.1" stroke-dasharray="3 3"/>
+<text class="cs" x="219" y="238" text-anchor="middle" style="fill:#5b6780">—</text>
+<rect x="256" y="216" width="58" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.1" stroke-dasharray="3 3"/>
+<text class="cs" x="285" y="238" text-anchor="middle" style="fill:#5b6780">—</text>
+<rect x="322" y="216" width="58" height="34" rx="6" fill="#1f3a45" stroke="#6fd3e8" stroke-width="1.4"/>
+<text class="m" x="351" y="238" text-anchor="middle" >AA</text>
+<rect x="388" y="216" width="58" height="34" rx="6" fill="#1f3a45" stroke="#6fd3e8" stroke-width="1.4"/>
+<text class="m" x="417" y="238" text-anchor="middle" >BB</text>
+<path class="f" d="M219 200 V274" stroke="#7aa2ff" stroke-width="1.4" marker-end="url(#m-blue)"/>
+<rect x="192" y="276" width="54" height="20" rx="6" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="219" y="290" text-anchor="middle" style="fill:#f2b45f">pick S1</text>
+<path class="f" d="M219 296 V316" stroke="#5ccfa5" stroke-width="1.4" marker-end="url(#m-out)"/>
+<path class="f" d="M285 200 V274" stroke="#7aa2ff" stroke-width="1.4" marker-end="url(#m-blue)"/>
+<rect x="258" y="276" width="54" height="20" rx="6" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="285" y="290" text-anchor="middle" style="fill:#f2b45f">pick S1</text>
+<path class="f" d="M285 296 V316" stroke="#5ccfa5" stroke-width="1.4" marker-end="url(#m-out)"/>
+<path class="f" d="M351 200 V209" stroke="#7aa2ff" stroke-width="1.2" stroke-dasharray="2 2"/>
+<text class="cs" x="351" y="208" text-anchor="middle" style="fill:#7d889c">×</text>
+<path class="f" d="M351 250 V274" stroke="#6fd3e8" stroke-width="1.4" marker-end="url(#m-cyan)"/>
+<rect x="324" y="276" width="54" height="20" rx="6" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="351" y="290" text-anchor="middle" style="fill:#f2b45f">pick S2</text>
+<path class="f" d="M351 296 V316" stroke="#5ccfa5" stroke-width="1.4" marker-end="url(#m-out)"/>
+<path class="f" d="M417 200 V209" stroke="#7aa2ff" stroke-width="1.2" stroke-dasharray="2 2"/>
+<text class="cs" x="417" y="208" text-anchor="middle" style="fill:#7d889c">×</text>
+<path class="f" d="M417 250 V274" stroke="#6fd3e8" stroke-width="1.4" marker-end="url(#m-cyan)"/>
+<rect x="390" y="276" width="54" height="20" rx="6" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="417" y="290" text-anchor="middle" style="fill:#f2b45f">pick S2</text>
+<path class="f" d="M417 296 V316" stroke="#5ccfa5" stroke-width="1.4" marker-end="url(#m-out)"/>
+<text class="cs" x="456" y="208" text-anchor="start" >shadowed by</text>
+<text class="cs" x="456" y="219" text-anchor="start" >younger store</text>
+<rect x="44" y="318" width="136" height="38" rx="8" fill="#1e2638" stroke="#5ccfa5" stroke-width="1.6"/>
+<text class="c" x="112" y="335" text-anchor="middle" >Forwarded word</text>
+<text class="cs" x="112" y="349" text-anchor="middle" >merged per byte lane</text>
+<rect x="190" y="320" width="58" height="34" rx="6" fill="#1d3a33" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="m" x="219" y="342" text-anchor="middle" >11</text>
+<rect x="256" y="320" width="58" height="34" rx="6" fill="#1d3a33" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="m" x="285" y="342" text-anchor="middle" >22</text>
+<rect x="322" y="320" width="58" height="34" rx="6" fill="#1d3a33" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="m" x="351" y="342" text-anchor="middle" >AA</text>
+<rect x="388" y="320" width="58" height="34" rx="6" fill="#1d3a33" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="m" x="417" y="342" text-anchor="middle" >BB</text>
+<text class="s" x="308" y="376" text-anchor="middle" >supplied to the load · stores write memory only at commit</text>
+<rect x="44" y="396" width="250" height="108" rx="8" fill="#171c28" stroke="#262f47" stroke-width="1.0"/>
+<text class="c" x="56" y="414" text-anchor="start" style="font-size:10.5px">Before · serial bestAge / merged chain</text>
+<rect x="306" y="396" width="250" height="108" rx="8" fill="#171c28" stroke="#262f47" stroke-width="1.0"/>
+<text class="c" x="318" y="414" text-anchor="start" style="font-size:10.5px">After · balanced fwdPick tree</text>
+<circle cx="64" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M71 452 H82" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="89" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M96 452 H107" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="114" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M121 452 H132" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="139" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M146 452 H157" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="164" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M171 452 H182" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="189" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M196 452 H207" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="214" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M221 452 H232" stroke="#f2b45f" stroke-width="1.2" marker-end="url(#m-cmp)"/>
+<circle cx="239" cy="452" r="6" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<text class="cs" x="169" y="486" text-anchor="middle" >8 dependent steps per byte lane</text>
+<circle cx="326" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="353" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="380" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="407" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="434" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="461" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="488" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<circle cx="515" cy="430" r="5" fill="#262f47" stroke="#7aa2ff" stroke-width="1.4"/>
+<path class="f" d="M326 435 L339.5 443" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M353 435 L339.5 443" stroke="#7d889c" stroke-width="1"/>
+<circle cx="339.5" cy="447" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M380 435 L393.5 443" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M407 435 L393.5 443" stroke="#7d889c" stroke-width="1"/>
+<circle cx="393.5" cy="447" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M434 435 L447.5 443" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M461 435 L447.5 443" stroke="#7d889c" stroke-width="1"/>
+<circle cx="447.5" cy="447" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M488 435 L501.5 443" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M515 435 L501.5 443" stroke="#7d889c" stroke-width="1"/>
+<circle cx="501.5" cy="447" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M339.5 452 L366.5 460" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M393.5 452 L366.5 460" stroke="#7d889c" stroke-width="1"/>
+<circle cx="366.5" cy="464" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M447.5 452 L474.5 460" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M501.5 452 L474.5 460" stroke="#7d889c" stroke-width="1"/>
+<circle cx="474.5" cy="464" r="5" fill="#262f47" stroke="#f2b45f" stroke-width="1.4"/>
+<path class="f" d="M366.5 469 L420.5 475" stroke="#7d889c" stroke-width="1"/>
+<path class="f" d="M474.5 469 L420.5 475" stroke="#7d889c" stroke-width="1"/>
+<circle cx="420.5" cy="479" r="5" fill="#262f47" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="cs" x="431" y="498" text-anchor="middle" >3 levels per byte lane</text>
+<text class="k" x="628" y="48" text-anchor="start" >PANEL B</text>
+<text class="t" x="628" y="68" text-anchor="start" >Store ordering: ROB tags → SQ position</text>
+<text class="s" x="628" y="86" text-anchor="start" >Which stores in the queue are older than a given load?</text>
+<rect x="628" y="98" width="528" height="196" rx="10" fill="#171c28" stroke="#262f47" stroke-width="1.0"/>
+<text class="k" x="644" y="118" text-anchor="start" >BEFORE · ROB-tag ordering</text>
+<rect x="644" y="130" width="35" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.3"/>
+<text class="m" x="661.5" y="151" text-anchor="middle" style="fill:#b59bff;font-size:10.5px">r12</text>
+<rect x="683" y="130" width="35" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.3"/>
+<text class="m" x="700.5" y="151" text-anchor="middle" style="fill:#b59bff;font-size:10.5px">r15</text>
+<rect x="722" y="130" width="35" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.3"/>
+<text class="m" x="739.5" y="151" text-anchor="middle" style="fill:#b59bff;font-size:10.5px">r21</text>
+<rect x="761" y="130" width="35" height="34" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.3"/>
+<text class="m" x="778.5" y="151" text-anchor="middle" style="fill:#b59bff;font-size:10.5px">r24</text>
+<rect x="800" y="130" width="35" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<rect x="839" y="130" width="35" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<rect x="878" y="130" width="35" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<rect x="917" y="130" width="35" height="34" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<text class="cs" x="803" y="178" text-anchor="start" >8-entry Store Queue · each store carries its ROB tag</text>
+<rect x="644" y="188" width="312" height="30" rx="7" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="800" y="207" text-anchor="middle" style="fill:#f2b45f;font-size:10px">8× age compare: isOlderRob(tag, loadTag, robHead)</text>
+<rect x="644" y="228" width="312" height="30" rx="7" fill="#1e2638" stroke="#f2b45f" stroke-width="1.3"/>
+<text class="cs" x="800" y="247" text-anchor="middle" style="fill:#f2b45f;font-size:10px">8-way CAM: sq[i].robTag == store tag → which slot?</text>
+<rect x="984" y="130" width="156" height="34" rx="8" fill="#1e2638" stroke="#b59bff" stroke-width="1.6"/>
+<text class="c" x="1062" y="151" text-anchor="middle" style="font-size:10.5px">Load · ROB tag r22</text>
+<path class="f" d="M1062 164 V203 H956" stroke="#b59bff" stroke-width="1.2" marker-end="url(#m-pur)"/>
+<rect x="984" y="228" width="156" height="34" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="c" x="1062" y="242" text-anchor="middle" style="font-size:10.5px">Executing store</text>
+<text class="cs" x="1062" y="255" text-anchor="middle" >ROB tag r21</text>
+<path class="f" d="M984 243 H956" stroke="#7aa2ff" stroke-width="1.2" marker-end="url(#m-blue)"/>
+<text class="cs" x="892" y="282" text-anchor="middle" >ordering needs extra tag metadata, compares and a lookup</text>
+<path class="f" d="M892 296 V312" stroke="#7d889c" stroke-width="1.4" marker-end="url(#m-flow)"/>
+<rect x="628" y="314" width="528" height="176" rx="10" fill="#171c28" stroke="#262f47" stroke-width="1.0"/>
+<text class="k" x="644" y="334" text-anchor="start" >AFTER · SQ-position ordering</text>
+<rect x="644" y="376" width="56" height="38" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<text class="cs" x="672.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 0</text>
+<rect x="706" y="376" width="56" height="38" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<text class="cs" x="734.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 1</text>
+<rect x="768" y="376" width="56" height="38" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="cs" x="796.0" y="399" text-anchor="middle" >store</text>
+<text class="cs" x="796.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 2</text>
+<rect x="830" y="376" width="56" height="38" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="cs" x="858.0" y="399" text-anchor="middle" >store</text>
+<text class="cs" x="858.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 3</text>
+<rect x="892" y="376" width="56" height="38" rx="6" fill="#223457" stroke="#7aa2ff" stroke-width="1.4"/>
+<text class="cs" x="920.0" y="399" text-anchor="middle" >store</text>
+<text class="cs" x="920.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 4</text>
+<rect x="954" y="376" width="56" height="38" rx="6" fill="#1c2840" stroke="#5b6f99" stroke-width="1.2"/>
+<text class="cs" x="982.0" y="399" text-anchor="middle" style="fill:#7d889c">store</text>
+<text class="cs" x="982.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 5</text>
+<rect x="1016" y="376" width="56" height="38" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<text class="cs" x="1044.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 6</text>
+<rect x="1078" y="376" width="56" height="38" rx="6" fill="none" stroke="#3a4560" stroke-width="1.0" stroke-dasharray="3 3"/>
+<text class="cs" x="1106.0" y="428" text-anchor="middle" style="fill:#7d889c">slot 7</text>
+<text class="c" x="796.0" y="352" text-anchor="middle" style="fill:#b59bff;font-size:11px">sqHead</text>
+<text class="cs" x="796.0" y="364" text-anchor="middle" style="fill:#8f7fcc;font-size:8.5px">oldest live</text>
+<path class="f" d="M796.0 367 V374" stroke="#b59bff" stroke-width="1.3" marker-end="url(#m-pur)"/>
+<text class="c" x="982.0" y="352" text-anchor="middle" style="fill:#b59bff;font-size:11px">sqWm</text>
+<text class="cs" x="982.0" y="364" text-anchor="middle" style="fill:#8f7fcc;font-size:8.5px">load’s mark</text>
+<path class="f" d="M982.0 367 V374" stroke="#b59bff" stroke-width="1.3" marker-end="url(#m-pur)"/>
+<text class="c" x="1044.0" y="352" text-anchor="middle" style="fill:#b59bff;font-size:11px">sqTail</text>
+<text class="cs" x="1044.0" y="364" text-anchor="middle" style="fill:#8f7fcc;font-size:8.5px">next alloc</text>
+<path class="f" d="M1044.0 367 V374" stroke="#b59bff" stroke-width="1.3" marker-end="url(#m-pur)"/>
+<path class="f" d="M768 438 V444 H948 V438" stroke="#5ccfa5" stroke-width="1.4"/>
+<text class="c" x="858.0" y="459" text-anchor="middle" style="fill:#5ccfa5;font-size:11px">older than the load</text>
+<text class="cs" x="858.0" y="473" text-anchor="middle" >(slot − sqHead) &lt; (sqWm − sqHead)</text>
+<text class="cs" x="982.0" y="444" text-anchor="middle" style="fill:#7d889c">allocated after</text>
+<text class="cs" x="982.0" y="455" text-anchor="middle" style="fill:#7d889c">the load</text>
+</svg>

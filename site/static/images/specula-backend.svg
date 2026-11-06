@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 440" width="1040" height="440" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Specula out-of-order backend organisation</title>
+<desc id="desc">Dispatch sends arithmetic and branch instructions to an 8-entry reservation station and loads, stores and atomics to an 8-entry memory queue; every instruction also gets an entry in the 32-entry reorder buffer. The reservation station feeds the ALU and the memory queue feeds the memory pipeline. Both read operands from and write results to the 64-entry physical register file and report completion to the reorder buffer, which retires in program order.</desc>
+<defs><marker id="m-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#a9b5cb"/></marker><marker id="m-res" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#5ccfa5"/></marker><marker id="m-ret" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#f2b45f"/></marker>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.t{font-size:14px;font-weight:600;fill:#e6eef8} .s{font-size:11px;fill:#9aa9c2}
+.c{font-size:11.5px;font-weight:600;fill:#e6eef8} .cs{font-size:9.5px;fill:#9aa9c2}
+.l{font-size:10px;paint-order:stroke;stroke:#171c28;stroke-width:4px;stroke-linejoin:round}
+</style></defs>
+<rect width="1040" height="440" rx="12" fill="#171c28"/>
+<rect x="24" y="150" width="100" height="120" rx="8" fill="#1e2638" stroke="#b59bff" stroke-width="1.6"/>
+<text class="t" x="74.0" y="207.0" text-anchor="middle">Dispatch</text>
+<text class="s" x="74.0" y="224.0" text-anchor="middle">after rename</text>
+<rect x="220" y="70" width="200" height="90" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="320.0" y="112.0" text-anchor="middle">Reservation Station</text>
+<text class="s" x="320.0" y="129.0" text-anchor="middle">8 entries · issue when ready</text>
+<rect x="220" y="270" width="200" height="90" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="320.0" y="312.0" text-anchor="middle">Memory Queue</text>
+<text class="s" x="320.0" y="329.0" text-anchor="middle">8 entries · oldest ready first</text>
+<rect x="500" y="70" width="170" height="90" rx="8" fill="#1e2638" stroke="#5ccfa5" stroke-width="1.6"/>
+<text class="t" x="585.0" y="112.0" text-anchor="middle">ALU</text>
+<text class="s" x="585.0" y="129.0" text-anchor="middle">branch · mul · div</text>
+<rect x="500" y="270" width="170" height="90" rx="8" fill="#1e2638" stroke="#5ccfa5" stroke-width="1.6"/>
+<text class="t" x="585.0" y="312.0" text-anchor="middle">Memory pipeline</text>
+<text class="s" x="585.0" y="329.0" text-anchor="middle">select · address · access</text>
+<rect x="220" y="188" width="450" height="54" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="t" x="445.0" y="212.0" text-anchor="middle">Physical Register File</text>
+<text class="s" x="445.0" y="229.0" text-anchor="middle">64 registers</text>
+<rect x="740" y="70" width="276" height="260" rx="8" fill="#1e2638" stroke="#f2b45f" stroke-width="1.6"/>
+<text class="t" x="878" y="94" text-anchor="middle">Reorder Buffer · 32 entries</text>
+<text class="s" x="878" y="111" text-anchor="middle">complete in any order · retire in order</text>
+<rect x="756" y="124" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="cs" x="770" y="142" text-anchor="start" fill="#f2b45f">tail</text>
+<text class="c" x="986" y="142" text-anchor="end" fill="#7d889c">pending</text>
+<rect x="756" y="157" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="c" x="986" y="175" text-anchor="end" fill="#7d889c">pending</text>
+<rect x="756" y="190" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="c" x="986" y="208" text-anchor="end" fill="#5ccfa5">done</text>
+<rect x="756" y="223" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="c" x="986" y="241" text-anchor="end" fill="#5ccfa5">done</text>
+<rect x="756" y="256" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="c" x="986" y="274" text-anchor="end" fill="#7d889c">pending</text>
+<rect x="756" y="289" width="244" height="27" rx="5" fill="#262f47"/>
+<text class="cs" x="770" y="307" text-anchor="start" fill="#f2b45f">head</text>
+<text class="c" x="986" y="307" text-anchor="end" fill="#5ccfa5">done</text>
+<path d="M124,185 H190 V115 H220" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="158" y="178" text-anchor="middle" fill="#a9b5cb">ALU · branch</text>
+<path d="M124,235 H190 V315 H220" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="129" y="228" text-anchor="start" fill="#a9b5cb">LW · SW · AMO</text>
+<path d="M89,150 V38 H878 V70" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="480" y="32" text-anchor="middle" fill="#a9b5cb">every instruction also gets a ROB entry</text>
+<path d="M420,115 H500" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="460" y="108" text-anchor="middle" fill="#a9b5cb">ready</text>
+<path d="M420,315 H500" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="460" y="308" text-anchor="middle" fill="#a9b5cb">ready</text>
+<path d="M540,188 V160" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M630,160 V188" fill="none" stroke="#5ccfa5" stroke-width="1.5" marker-end="url(#m-res)" stroke-linejoin="round"/>
+<text class="l" x="534" y="176" text-anchor="end" fill="#a9b5cb">operands</text>
+<text class="l" x="638" y="176" text-anchor="start" fill="#5ccfa5">result</text>
+<path d="M540,242 V270" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M630,270 V242" fill="none" stroke="#5ccfa5" stroke-width="1.5" marker-end="url(#m-res)" stroke-linejoin="round"/>
+<text class="l" x="534" y="260" text-anchor="end" fill="#a9b5cb">operands</text>
+<text class="l" x="638" y="260" text-anchor="start" fill="#5ccfa5">result</text>
+<path d="M320,188 V160" fill="none" stroke="#5ccfa5" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m-res)" stroke-linejoin="round"/>
+<text class="l" x="328" y="177" text-anchor="start" fill="#5ccfa5">wakeup</text>
+<path d="M320,242 V270" fill="none" stroke="#a9b5cb" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="328" y="261" text-anchor="start" fill="#a9b5cb">ready bits</text>
+<path d="M670,115 H740" fill="none" stroke="#5ccfa5" stroke-width="1.5" marker-end="url(#m-res)" stroke-linejoin="round"/>
+<text class="l" x="705" y="108" text-anchor="middle" fill="#5ccfa5">done</text>
+<path d="M670,315 H740" fill="none" stroke="#5ccfa5" stroke-width="1.5" marker-end="url(#m-res)" stroke-linejoin="round"/>
+<text class="l" x="705" y="308" text-anchor="middle" fill="#5ccfa5">done</text>
+<path d="M878,330 V372" fill="none" stroke="#f2b45f" stroke-width="1.5" marker-end="url(#m-ret)" stroke-linejoin="round"/>
+<rect x="740" y="372" width="276" height="48" rx="8" fill="#192031" stroke="#f2b45f" stroke-width="1.6"/>
+<text class="t" x="878" y="392" text-anchor="middle">Retire in program order</text>
+<text class="s" x="878" y="409" text-anchor="middle">frees old register · commits stores</text>
+</svg>

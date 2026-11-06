@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="ttl desc">
+<title id="ttl">In-order vs out-of-order execution timeline</title>
+<desc id="desc">Three instructions: I1 is a long-latency divide, I2 depends on I1, I3 is an independent add. An in-order processor stalls I2 and I3 behind I1 and finishes in 8 cycles. An out-of-order processor executes I3 in cycle 2 while I1 is still running, holds its result until in-order commit, and finishes in 7 cycles.</desc>
+<defs>
+<pattern id="stall" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#ff7b88" fill-opacity=".07"/><line x1="0" y1="0" x2="0" y2="6" stroke="#ff7b88" stroke-opacity=".45" stroke-width="2"/></pattern>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.t{font-size:14px;font-weight:600;fill:#e6eef8} .s{font-size:11px;fill:#9aa9c2}
+.i{font-size:12px;font-weight:600;fill:#e6eef8} .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;fill:#9aa9c2}
+.b{font-size:10.5px;font-weight:600;text-anchor:middle}
+.ax{font-size:10px;fill:#7d889c;text-anchor:middle}
+</style></defs>
+<rect width="1040" height="480" rx="12" fill="#171c28"/>
+<text class="t" x="24" y="40">In-order</text><text class="s" x="24" y="57">I3 cannot pass I2</text>
+<text class="ax" x="340.0" y="56">1</text>
+<text class="ax" x="420.0" y="56">2</text>
+<text class="ax" x="500.0" y="56">3</text>
+<text class="ax" x="580.0" y="56">4</text>
+<text class="ax" x="660.0" y="56">5</text>
+<text class="ax" x="740.0" y="56">6</text>
+<text class="ax" x="820.0" y="56">7</text>
+<text class="ax" x="900.0" y="56">8</text>
+<text class="s" x="288" y="56" text-anchor="end">cycle</text>
+<line x1="300" y1="64" x2="300" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="380" y1="64" x2="380" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="460" y1="64" x2="460" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="540" y1="64" x2="540" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="620" y1="64" x2="620" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="700" y1="64" x2="700" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="780" y1="64" x2="780" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="860" y1="64" x2="860" y2="184" stroke="#2a3246" stroke-width="1"/>
+<line x1="940" y1="64" x2="940" y2="184" stroke="#2a3246" stroke-width="1"/>
+<text class="i" x="24" y="88">I1</text><text class="m" x="52" y="88">divu x5, x1, x2</text>
+<rect x="302" y="70" width="476" height="28" rx="5" fill="#7aa2ff22" stroke="#7aa2ff" stroke-width="1.5"/>
+<text class="b" x="540.0" y="88" fill="#7aa2ff">DIV</text>
+<text class="i" x="24" y="128">I2</text><text class="m" x="52" y="128">add  x6, x5, x3</text>
+<rect x="382" y="110" width="396" height="28" rx="5" fill="url(#stall)" stroke="#ff7b88" stroke-opacity=".6" stroke-dasharray="3 3"/>
+<text class="b" x="580.0" y="128" fill="#ff7b88">stalled</text>
+<rect x="782" y="110" width="76" height="28" rx="5" fill="#a9b5cb22" stroke="#a9b5cb" stroke-width="1.5"/>
+<text class="b" x="820.0" y="128" fill="#e6eef8">ADD</text>
+<text class="i" x="24" y="168">I3</text><text class="m" x="52" y="168">add  x7, x8, x9</text>
+<rect x="382" y="150" width="476" height="28" rx="5" fill="url(#stall)" stroke="#ff7b88" stroke-opacity=".6" stroke-dasharray="3 3"/>
+<text class="b" x="620.0" y="168" fill="#ff7b88">stalled behind I2</text>
+<rect x="862" y="150" width="76" height="28" rx="5" fill="#5ccfa522" stroke="#5ccfa5" stroke-width="1.5"/>
+<text class="b" x="900.0" y="168" fill="#5ccfa5">ADD</text>
+<line x1="940" y1="64" x2="940" y2="190" stroke="#e6eef8" stroke-width="1.5" stroke-dasharray="2 3"/>
+<text class="i" x="950" y="178">8 cycles</text>
+<text class="t" x="24" y="245">Out-of-order</text><text class="s" x="24" y="262">I3 runs ahead of I2</text>
+<text class="ax" x="340.0" y="261">1</text>
+<text class="ax" x="420.0" y="261">2</text>
+<text class="ax" x="500.0" y="261">3</text>
+<text class="ax" x="580.0" y="261">4</text>
+<text class="ax" x="660.0" y="261">5</text>
+<text class="ax" x="740.0" y="261">6</text>
+<text class="ax" x="820.0" y="261">7</text>
+<text class="ax" x="900.0" y="261">8</text>
+<text class="s" x="288" y="261" text-anchor="end">cycle</text>
+<line x1="300" y1="269" x2="300" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="380" y1="269" x2="380" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="460" y1="269" x2="460" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="540" y1="269" x2="540" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="620" y1="269" x2="620" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="700" y1="269" x2="700" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="780" y1="269" x2="780" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="860" y1="269" x2="860" y2="389" stroke="#2a3246" stroke-width="1"/>
+<line x1="940" y1="269" x2="940" y2="389" stroke="#2a3246" stroke-width="1"/>
+<text class="i" x="24" y="293">I1</text><text class="m" x="52" y="293">divu x5, x1, x2</text>
+<rect x="302" y="275" width="476" height="28" rx="5" fill="#7aa2ff22" stroke="#7aa2ff" stroke-width="1.5"/>
+<text class="b" x="540.0" y="293" fill="#7aa2ff">DIV</text>
+<text class="i" x="24" y="333">I2</text><text class="m" x="52" y="333">add  x6, x5, x3</text>
+<rect x="382" y="315" width="396" height="28" rx="5" fill="none" stroke="#7d889c" stroke-dasharray="3 3"/>
+<text class="b" x="580.0" y="333" fill="#7d889c">waiting for I1</text>
+<rect x="782" y="315" width="76" height="28" rx="5" fill="#a9b5cb22" stroke="#a9b5cb" stroke-width="1.5"/>
+<text class="b" x="820.0" y="333" fill="#e6eef8">ADD</text>
+<text class="i" x="24" y="373">I3</text><text class="m" x="52" y="373">add  x7, x8, x9</text>
+<rect x="382" y="355" width="76" height="28" rx="5" fill="#5ccfa522" stroke="#5ccfa5" stroke-width="1.5"/>
+<text class="b" x="420.0" y="373" fill="#5ccfa5">ADD</text>
+<line x1="462" y1="369.0" x2="858" y2="369.0" stroke="#5ccfa5" stroke-opacity=".6" stroke-dasharray="1 4" stroke-linecap="round" stroke-width="2"/>
+<text class="s" x="660.0" y="363.0" text-anchor="middle">result held until in-order commit</text>
+<line x1="860" y1="269" x2="860" y2="395" stroke="#e6eef8" stroke-width="1.5" stroke-dasharray="2 3"/>
+<text class="i" x="870" y="383">7 cycles</text>
+<rect x="24" y="446" width="16" height="11" rx="3" fill="#7aa2ff22" stroke="#7aa2ff" stroke-width="1.5"/><text class="s" x="46" y="455">long-latency exec</text>
+<rect x="174" y="446" width="16" height="11" rx="3" fill="#a9b5cb22" stroke="#a9b5cb" stroke-width="1.5"/><text class="s" x="196" y="455">dependent exec</text>
+<rect x="324" y="446" width="16" height="11" rx="3" fill="#5ccfa522" stroke="#5ccfa5" stroke-width="1.5"/><text class="s" x="346" y="455">independent exec</text>
+<rect x="474" y="446" width="16" height="11" rx="3" fill="url(#stall)" stroke="#ff7b88" stroke-opacity=".6" stroke-dasharray="3 3"/><text class="s" x="496" y="455">stalled (in-order)</text>
+<rect x="624" y="446" width="16" height="11" rx="3" fill="none" stroke="#7d889c" stroke-dasharray="3 3"/><text class="s" x="646" y="455">waiting in queue (OoO)</text>
+</svg>

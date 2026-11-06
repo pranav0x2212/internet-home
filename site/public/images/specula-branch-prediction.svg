@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 390" width="1040" height="390" role="img" aria-labelledby="ttl desc">
+<title id="ttl">Specula branch prediction flow</title>
+<desc id="desc">Fetch PC queries a gshare PHT (64 two-bit counters indexed by 6-bit GHR XOR PC) and a 16-entry BTB to choose the next fetch PC. The branch executes in the ALU, is compared with the prediction and used to train the predictor at writeback, and a misprediction triggers a flush and fetch redirect when it reaches the ROB head.</desc>
+<defs><marker id="m-flow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#a9b5cb"/></marker><marker id="m-upd" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#5ccfa5"/></marker><marker id="m-rec" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 z" fill="#ff7b88"/></marker>
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.t{font-size:14px;font-weight:600;fill:#e6eef8} .s{font-size:11px;fill:#9aa9c2}
+.c{font-size:11.5px;font-weight:600;fill:#e6eef8} .cs{font-size:9.5px;fill:#9aa9c2}
+.h{font-size:11px;font-weight:700;letter-spacing:.08em}
+.l{font-size:10px;paint-order:stroke;stroke:#171c28;stroke-width:4px;stroke-linejoin:round}
+</style></defs>
+<rect width="1040" height="390" rx="12" fill="#171c28"/>
+<text class="h" x="24" y="28" text-anchor="start" fill="#7aa2ff">PREDICT</text>
+<rect x="24" y="60" width="120" height="70" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="84" y="100" text-anchor="middle">Fetch PC</text>
+<path d="M144,95 H190" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<rect x="190" y="40" width="310" height="146" rx="8" fill="#1a2133" stroke="#7aa2ff" stroke-width="1.6"/>
+<rect x="204" y="56" width="84" height="26" rx="5" fill="#262f47"/>
+<text class="c" x="246.0" y="73.0" text-anchor="middle">GHR · 6-bit</text>
+<rect x="204" y="88" width="84" height="26" rx="5" fill="#262f47"/>
+<text class="c" x="246.0" y="105.0" text-anchor="middle">PC bits</text>
+<circle cx="322" cy="85" r="12" fill="#262f47" stroke="#7aa2ff" stroke-width="1.2"/>
+<text class="c" x="322" y="90" text-anchor="middle">⊕</text>
+<path d="M288,69 H306 V80 H309" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M288,101 H306 V90 H309" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M334,85 H350" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<rect x="350" y="56" width="130" height="58" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="415" y="82" text-anchor="middle">PHT</text>
+<text class="cs" x="415" y="100" text-anchor="middle">64 × 2-bit counters</text>
+<rect x="204" y="132" width="84" height="26" rx="5" fill="#262f47"/>
+<text class="c" x="246.0" y="149.0" text-anchor="middle">PC bits</text>
+<path d="M288,145 H350" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<rect x="350" y="128" width="130" height="48" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="415" y="150" text-anchor="middle">BTB</text>
+<text class="cs" x="415" y="166" text-anchor="middle">16 entries, direct-mapped</text>
+<rect x="560" y="60" width="150" height="70" rx="8" fill="#1e2638" stroke="#7aa2ff" stroke-width="1.6"/>
+<text class="t" x="635" y="92" text-anchor="middle">Next PC</text>
+<text class="cs" x="635" y="110" text-anchor="middle">taken + BTB hit ? target : PC+4</text>
+<path d="M480,85 H520 V85 H560" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M480,152 H520 V115 H560" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M635,130 V210 H84 V130" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<text class="l" x="330" y="204" text-anchor="middle" fill="#a9b5cb">next fetch PC</text>
+<rect x="760" y="60" width="256" height="70" rx="8" fill="#1e2638" stroke="#f2b45f" stroke-width="1.6"/>
+<text class="t" x="888" y="92" text-anchor="middle">One unresolved branch</text>
+<text class="s" x="888" y="110" text-anchor="middle">fetch holds at the next one</text>
+<text class="h" x="24" y="280" text-anchor="start" fill="#c3cee3">RESOLVE</text>
+<text class="h" x="380" y="280" text-anchor="start" fill="#5ccfa5">WRITEBACK</text>
+<text class="h" x="736" y="280" text-anchor="start" fill="#ff7b88">RECOVER</text>
+<rect x="24" y="290" width="280" height="72" rx="8" fill="#1e2638" stroke="#c3cee3" stroke-width="1.6"/>
+<text class="t" x="164.0" y="323.0" text-anchor="middle">ALU</text>
+<text class="s" x="164.0" y="341.0" text-anchor="middle">actual taken + target</text>
+<rect x="380" y="290" width="280" height="72" rx="8" fill="#1e2638" stroke="#5ccfa5" stroke-width="1.6"/>
+<text class="t" x="520.0" y="323.0" text-anchor="middle">Writeback</text>
+<text class="s" x="520.0" y="341.0" text-anchor="middle">compare · train predictor</text>
+<rect x="736" y="290" width="280" height="72" rx="8" fill="#1e2638" stroke="#ff7b88" stroke-width="1.6"/>
+<text class="t" x="876.0" y="323.0" text-anchor="middle">ROB head</text>
+<text class="s" x="876.0" y="341.0" text-anchor="middle">mispredict → flush + redirect</text>
+<path d="M304,326 H380" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M660,326 H736" fill="none" stroke="#a9b5cb" stroke-width="1.5" marker-end="url(#m-flow)" stroke-linejoin="round"/>
+<path d="M474,290 V251 a7,7 0 0 1 0,-14 V217 a7,7 0 0 1 0,-14 V186" fill="none" stroke="#5ccfa5" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m-upd)" stroke-linejoin="round"/>
+<text class="l" x="486" y="266" text-anchor="start" fill="#5ccfa5">train</text>
+<path d="M876,290 V244 H44 V130" fill="none" stroke="#ff7b88" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#m-rec)" stroke-linejoin="round"/>
+<text class="l" x="700" y="238" text-anchor="middle" fill="#ff7b88">redirect PC</text>
+</svg>
